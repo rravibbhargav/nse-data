@@ -2,7 +2,7 @@
  "date_iso": "2026-10-23",
  "date_disp": "23-10-2026",
  "trading_day": true,
- "generated_at": "2026-10-26T00:20:15.648779+05:30",
+ "generated_at": "2026-10-26T00:23:41.638032+05:30",
  "mode": "push",
  "breadth": {
   "total": 2706,
@@ -135,8 +135,8 @@
  },
  "price_band": {
   "ok": true,
-  "count": 3597,
-  "first_run": true,
+  "count": 0,
+  "first_run": false,
   "changed": []
  },
  "sector_moves": {
