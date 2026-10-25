@@ -1,0 +1,32 @@
+name: NSE reachability test
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try NSE downloads
+        run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          try() {
+            name="$1"; url="$2"; ref="$3"
+            for i in 1 2 3 4; do
+              code=$(curl -s -m 25 -o /tmp/out.txt -w "%{http_code}" -A "$UA" -H "Referer: $ref" "$url")
+              size=$(wc -c < /tmp/out.txt)
+              echo "RESULT $name try=$i http=$code bytes=$size"
+              if [ "$code" = "200" ] && [ "$size" -gt 1000 ]; then
+                head -c 200 /tmp/out.txt | head -2
+                return 0
+              fi
+              sleep 5
+            done
+            return 1
+          }
+          try bhavcopy "https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_23102026.csv" "https://www.nseindia.com/"
+          try bandlist "https://nsearchives.nseindia.com/content/equities/sec_list_23102026.csv" "https://www.nseindia.com/"
+          try indices_api "https://www.nseindia.com/api/allIndices" "https://www.nseindia.com/market-data/live-market-indices"
+          try week52_api "https://www.nseindia.com/api/live-analysis-data-52weekhighstock" "https://www.nseindia.com/market-data/52-week-high-low"
+          echo "DONE"
