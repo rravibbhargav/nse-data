@@ -1,7 +1,1047 @@
 {
  "date_iso": "2026-10-30",
  "date_disp": "30-10-2026",
- "trading_day": false,
- "generated_at": "2026-10-30T00:09:45.370317+05:30",
- "mode": "schedule"
+ "trading_day": true,
+ "generated_at": "2026-10-30T23:44:26.931830+05:30",
+ "mode": "schedule",
+ "breadth": {
+  "total": 2703,
+  "adv": 618,
+  "dec": 2058,
+  "unch": 27,
+  "avg_move": -1.59,
+  "pct_red": 76.1,
+  "ad_ratio": 0.3,
+  "turnover_lakh_cr": 1.18
+ },
+ "week52": {
+  "highs_count": 60,
+  "lows_count": 211,
+  "top_highs": [
+   {
+    "symbol": "RTL",
+    "pChange": 9.947089947089948
+   },
+   {
+    "symbol": "INDSWFTLAB",
+    "pChange": -9.712054660810152
+   },
+   {
+    "symbol": "OPTIFIN",
+    "pChange": 8.865710560625814
+   },
+   {
+    "symbol": "NGIL",
+    "pChange": 8.209832980475182
+   },
+   {
+    "symbol": "BPLPHARMA",
+    "pChange": 7.445362333995608
+   }
+  ],
+  "top_lows": [
+   {
+    "symbol": "SHIVAM-RE1",
+    "pChange": -25.609756097560975
+   },
+   {
+    "symbol": "ANNAPURNA",
+    "pChange": 20
+   },
+   {
+    "symbol": "AVANCE",
+    "pChange": 20
+   },
+   {
+    "symbol": "INTELLECT",
+    "pChange": -17.392386165712864
+   },
+   {
+    "symbol": "NIITMTS",
+    "pChange": -15.998087242973275
+   }
+  ]
+ },
+ "bulk_deals": {
+  "ok": true,
+  "count": 70,
+  "items": [
+   {
+    "symbol": "LOTUSDEV",
+    "value_cr": 339.36,
+    "client": "SMALLCAP WORLD FUND INC",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SAGILITY",
+    "value_cr": 240.19,
+    "client": "BNP PARIBAS FINANCIAL MARKETS",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SAGILITY",
+    "value_cr": 190.51,
+    "client": "GHISALLO MASTER FUND LP",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SAGILITY",
+    "value_cr": 116.21,
+    "client": "GOLDMAN SACHS FUNDS - GOLDMAN SACHS INDIA EQUITY PORTFOLIO",
+    "side": "BUY"
+   },
+   {
+    "symbol": "RATNAVEER",
+    "value_cr": 62.16,
+    "client": "ARIHANT CAPITAL MARKETS LIMITED",
+    "side": "SELL"
+   },
+   {
+    "symbol": "MARSONS",
+    "value_cr": 58.82,
+    "client": "ARIHANT CAPITAL MARKETS LIMITED",
+    "side": "SELL"
+   },
+   {
+    "symbol": "MARSONS",
+    "value_cr": 58.59,
+    "client": "ARIHANT CAPITAL MARKETS LIMITED",
+    "side": "BUY"
+   },
+   {
+    "symbol": "RATNAVEER",
+    "value_cr": 55.18,
+    "client": "ARIHANT CAPITAL MARKETS LIMITED",
+    "side": "BUY"
+   },
+   {
+    "symbol": "EQUITASBNK",
+    "value_cr": 50.08,
+    "client": "SSPL SECURITIES PRIVATE LIMITED",
+    "side": "BUY"
+   },
+   {
+    "symbol": "RATNAVEER",
+    "value_cr": 42.08,
+    "client": "TIRTH GEMS",
+    "side": "BUY"
+   }
+  ]
+ },
+ "block_deals": {
+  "ok": true,
+  "count": 12,
+  "items": [
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 981.79,
+    "client": "TENCENT CLOUD EUROPE B.V.",
+    "side": "SELL"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 428.86,
+    "client": "SOCIETE GENERALE",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 238.28,
+    "client": "MORGAN STANLEY ASIA SINGAPORE PTE",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 190.59,
+    "client": "GOLDMAN SACHS BANK EUROPE SE",
+    "side": "BUY"
+   },
+   {
+    "symbol": "TMCV",
+    "value_cr": 51.61,
+    "client": "BANK OF AMERICA NATIONAL ASSOCIATION",
+    "side": "SELL"
+   },
+   {
+    "symbol": "TMCV",
+    "value_cr": 51.61,
+    "client": "BOFA SECURITIES EUROPE SA",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 49.99,
+    "client": "NIPPON INDIA MUTUAL FUND",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 47.12,
+    "client": "GHISALLO MASTER FUND LP",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 10.0,
+    "client": "ADITYA BIRLA SUN LIFE MUTUAL FUND",
+    "side": "BUY"
+   },
+   {
+    "symbol": "SWIGGY",
+    "value_cr": 9.96,
+    "client": "ADITYA BIRLA SUN LIFE MUTUAL FUND",
+    "side": "BUY"
+   }
+  ]
+ },
+ "price_band": {
+  "ok": true,
+  "count": 37,
+  "first_run": false,
+  "changed": [
+   {
+    "symbol": "QUINTEGRA",
+    "old": "5",
+    "new": "2"
+   },
+   {
+    "symbol": "ACSTECH",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "AGSTRA",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "ARABIAN",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "BIKEWO",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "DELPHIFX",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "ELCIDIN",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "GFLLIMITED",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "GOLDTECH",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "HILINFRA",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "KAMAHOLD",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "KICL",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "MAHSCOOTER",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "NRL",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "NSIL",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "PILANIINVS",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "RADIOWALLA",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "RAMASTEEL",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "SAAKSHI",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "SETUINFRA",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "SHREERAMA",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "SILINV",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "SPENCERS",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "TGL",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "TIRUPATIFL",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "TVSHLTD",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "WILLAMAGOR",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "ACEVECTOR",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "GENESYS",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "KHFM",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "ORIENTLTD",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "PASHUPATI",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "RKFAL",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "BAJAJHLDNG",
+    "old": "No Band",
+    "new": "20"
+   },
+   {
+    "symbol": "GANESHBE",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "PIONRINV",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "SHIVAM-RE1",
+    "old": "40",
+    "new": "20"
+   }
+  ]
+ },
+ "sector_moves": {
+  "NIFTY 50": {
+   "pChange": 0.51,
+   "last": 23053.1
+  },
+  "NIFTY NEXT 50": {
+   "pChange": -0.61,
+   "last": 67709.1
+  },
+  "NIFTY BANK": {
+   "pChange": -0.41,
+   "last": 54686.95
+  },
+  "NIFTY FINANCIAL SERVICES": {
+   "pChange": 0.03,
+   "last": 24712.2
+  },
+  "NIFTY MIDCAP SELECT": {
+   "pChange": -1.47,
+   "last": 13184.5
+  },
+  "NIFTY INDIA FPI 150": {
+   "pChange": 0.16,
+   "last": 1479.2
+  },
+  "NIFTY 100": {
+   "pChange": 0.3,
+   "last": 23971.55
+  },
+  "NIFTY 200": {
+   "pChange": 0.06,
+   "last": 13183.95
+  },
+  "NIFTY 500": {
+   "pChange": -0.21,
+   "last": 21895.9
+  },
+  "NIFTY MIDCAP 50": {
+   "pChange": -0.86,
+   "last": 16513.3
+  },
+  "NIFTY MIDCAP 100": {
+   "pChange": -0.93,
+   "last": 57301.25
+  },
+  "NIFTY SMALLCAP 100": {
+   "pChange": -1.85,
+   "last": 18463.6
+  },
+  "INDIA VIX": {
+   "pChange": 2.21,
+   "last": 15.45
+  },
+  "NIFTY MIDCAP 150": {
+   "pChange": -0.93,
+   "last": 21047.5
+  },
+  "NIFTY SMALLCAP 50": {
+   "pChange": -1.63,
+   "last": 9363.55
+  },
+  "NIFTY SMALLCAP 250": {
+   "pChange": -1.97,
+   "last": 16764.55
+  },
+  "NIFTY MIDSMALLCAP 400": {
+   "pChange": -1.3,
+   "last": 19500.0
+  },
+  "NIFTY500 MULTICAP 50:25:25": {
+   "pChange": -0.56,
+   "last": 15451.55
+  },
+  "NIFTY LARGEMIDCAP 250": {
+   "pChange": -0.3,
+   "last": 15541.55
+  },
+  "NIFTY TOTAL MARKET": {
+   "pChange": -0.3,
+   "last": 12360.4
+  },
+  "NIFTY MICROCAP 250": {
+   "pChange": -2.49,
+   "last": 23900.8
+  },
+  "NIFTY500 LARGEMIDSMALL EQUAL-CAP WEIGHTED": {
+   "pChange": -0.85,
+   "last": 17182.95
+  },
+  "NIFTY SMALLCAP 500": {
+   "pChange": -2.08,
+   "last": 19121.55
+  },
+  "NIFTY MIDSMALLCAP400 50:50": {
+   "pChange": -1.45,
+   "last": 19061.7
+  },
+  "NIFTY AUTO": {
+   "pChange": -0.87,
+   "last": 25422.7
+  },
+  "NIFTY FINANCIAL SERVICES 25/50": {
+   "pChange": -0.03,
+   "last": 26446.9
+  },
+  "NIFTY FMCG": {
+   "pChange": -0.62,
+   "last": 43609.2
+  },
+  "NIFTY IT": {
+   "pChange": 2.32,
+   "last": 32606.9
+  },
+  "NIFTY MEDIA": {
+   "pChange": -1.46,
+   "last": 1631.25
+  },
+  "NIFTY METAL": {
+   "pChange": -0.54,
+   "last": 11784.9
+  },
+  "NIFTY PHARMA": {
+   "pChange": 1.55,
+   "last": 27124.85
+  },
+  "NIFTY PSU BANK": {
+   "pChange": -0.93,
+   "last": 8234.85
+  },
+  "NIFTY PRIVATE BANK": {
+   "pChange": 0.0,
+   "last": 27053.5
+  },
+  "NIFTY REALTY": {
+   "pChange": -0.72,
+   "last": 813.9
+  },
+  "NIFTY HEALTHCARE INDEX": {
+   "pChange": 1.58,
+   "last": 16449.55
+  },
+  "NIFTY CONSUMER DURABLES": {
+   "pChange": -1.78,
+   "last": 34525.15
+  },
+  "NIFTY OIL & GAS": {
+   "pChange": -0.47,
+   "last": 10303.25
+  },
+  "NIFTY MIDSMALL HEALTHCARE": {
+   "pChange": 1.34,
+   "last": 51917.65
+  },
+  "NIFTY FINANCIAL SERVICES EX-BANK": {
+   "pChange": -1.04,
+   "last": 28504.7
+  },
+  "NIFTY MIDSMALL FINANCIAL SERVICES": {
+   "pChange": -2.24,
+   "last": 19928.1
+  },
+  "NIFTY MIDSMALL IT & TELECOM": {
+   "pChange": -0.29,
+   "last": 10109.2
+  },
+  "NIFTY CHEMICALS": {
+   "pChange": -1.04,
+   "last": 26621.25
+  },
+  "NIFTY500 HEALTHCARE": {
+   "pChange": 1.37,
+   "last": 21420.4
+  },
+  "NIFTY REITS & REALTY": {
+   "pChange": 0.27,
+   "last": 1806.3
+  },
+  "NIFTY CEMENT": {
+   "pChange": -1.26,
+   "last": 13205.0
+  },
+  "NIFTY DIVIDEND OPPORTUNITIES 50": {
+   "pChange": 0.22,
+   "last": 5587.65
+  },
+  "NIFTY GROWTH SECTORS 15": {
+   "pChange": 0.78,
+   "last": 11113.0
+  },
+  "NIFTY100 QUALITY 30": {
+   "pChange": 0.31,
+   "last": 5415.4
+  },
+  "NIFTY50 VALUE 20": {
+   "pChange": 0.57,
+   "last": 11375.55
+  },
+  "NIFTY50 TR 2X LEVERAGE": {
+   "pChange": 1.0,
+   "last": 16436.2
+  },
+  "NIFTY50 PR 2X LEVERAGE": {
+   "pChange": 1.0,
+   "last": 10771.6
+  },
+  "NIFTY50 TR 1X INVERSE": {
+   "pChange": -0.5,
+   "last": 188.25
+  },
+  "NIFTY50 PR 1X INVERSE": {
+   "pChange": -0.49,
+   "last": 232.2
+  },
+  "NIFTY50 DIVIDEND POINTS": {
+   "pChange": 0.0,
+   "last": 206.19
+  },
+  "NIFTY ALPHA 50": {
+   "pChange": -1.33,
+   "last": 52498.6
+  },
+  "NIFTY50 EQUAL WEIGHT": {
+   "pChange": 0.49,
+   "last": 31194.45
+  },
+  "NIFTY100 EQUAL WEIGHT": {
+   "pChange": -0.09,
+   "last": 32470.45
+  },
+  "NIFTY100 LOW VOLATILITY 30": {
+   "pChange": 0.71,
+   "last": 19027.05
+  },
+  "NIFTY200 QUALITY 30": {
+   "pChange": 0.04,
+   "last": 18937.8
+  },
+  "NIFTY ALPHA LOW-VOLATILITY 30": {
+   "pChange": 0.2,
+   "last": 24957.7
+  },
+  "NIFTY200 MOMENTUM 30": {
+   "pChange": -0.55,
+   "last": 28565.45
+  },
+  "NIFTY MIDCAP150 QUALITY 50": {
+   "pChange": -0.6,
+   "last": 22236.95
+  },
+  "NIFTY200 ALPHA 30": {
+   "pChange": -0.77,
+   "last": 24720.0
+  },
+  "NIFTY MIDCAP150 MOMENTUM 50": {
+   "pChange": -0.6,
+   "last": 59469.45
+  },
+  "NIFTY500 MOMENTUM 50": {
+   "pChange": -0.74,
+   "last": 51617.0
+  },
+  "NIFTY MIDSMALLCAP400 MOMENTUM QUALITY 100": {
+   "pChange": -0.82,
+   "last": 48804.05
+  },
+  "NIFTY SMALLCAP250 MOMENTUM QUALITY 100": {
+   "pChange": -2.0,
+   "last": 45614.65
+  },
+  "NIFTY TOP 10 EQUAL WEIGHT": {
+   "pChange": 0.58,
+   "last": 8466.1
+  },
+  "NIFTY ALPHA QUALITY LOW-VOLATILITY 30": {
+   "pChange": 0.34,
+   "last": 21336.1
+  },
+  "NIFTY ALPHA QUALITY VALUE LOW-VOLATILITY 30": {
+   "pChange": 0.15,
+   "last": 18779.3
+  },
+  "NIFTY HIGH BETA 50": {
+   "pChange": -1.74,
+   "last": 3945.75
+  },
+  "NIFTY LOW VOLATILITY 50": {
+   "pChange": 0.66,
+   "last": 23279.05
+  },
+  "NIFTY QUALITY LOW-VOLATILITY 30": {
+   "pChange": 0.71,
+   "last": 15849.25
+  },
+  "NIFTY SMALLCAP250 QUALITY 50": {
+   "pChange": -2.02,
+   "last": 23169.55
+  },
+  "NIFTY TOP 15 EQUAL WEIGHT": {
+   "pChange": 0.37,
+   "last": 9439.5
+  },
+  "NIFTY100 ALPHA 30": {
+   "pChange": -1.0,
+   "last": 16508.85
+  },
+  "NIFTY200 VALUE 30": {
+   "pChange": -0.54,
+   "last": 13765.85
+  },
+  "NIFTY500 EQUAL WEIGHT": {
+   "pChange": -1.45,
+   "last": 13575.55
+  },
+  "NIFTY500 MULTICAP MOMENTUM QUALITY 50": {
+   "pChange": -1.37,
+   "last": 38281.4
+  },
+  "NIFTY500 VALUE 50": {
+   "pChange": -0.82,
+   "last": 14651.4
+  },
+  "NIFTY TOP 20 EQUAL WEIGHT": {
+   "pChange": 0.59,
+   "last": 8604.7
+  },
+  "NIFTY500 QUALITY 50": {
+   "pChange": -1.01,
+   "last": 18037.25
+  },
+  "NIFTY500 LOW VOLATILITY 50": {
+   "pChange": 0.42,
+   "last": 21293.6
+  },
+  "NIFTY500 MULTIFACTOR MQVLV 50": {
+   "pChange": -0.82,
+   "last": 28307.65
+  },
+  "NIFTY50 USD": {
+   "pChange": 0.8,
+   "last": 8410.9
+  },
+  "NIFTY500 FLEXICAP QUALITY 30": {
+   "pChange": -0.48,
+   "last": 9441.85
+  },
+  "NIFTY TOTAL MARKET MOMENTUM QUALITY 50": {
+   "pChange": -0.89,
+   "last": 41232.85
+  },
+  "NIFTY COMMODITIES": {
+   "pChange": -0.22,
+   "last": 8966.45
+  },
+  "NIFTY INDIA CONSUMPTION": {
+   "pChange": 0.29,
+   "last": 11090.7
+  },
+  "NIFTY CPSE": {
+   "pChange": 0.43,
+   "last": 6058.0
+  },
+  "NIFTY ENERGY": {
+   "pChange": -0.97,
+   "last": 34957.9
+  },
+  "NIFTY INFRASTRUCTURE": {
+   "pChange": 0.07,
+   "last": 8799.0
+  },
+  "NIFTY100 LIQUID 15": {
+   "pChange": 0.67,
+   "last": 7463.4
+  },
+  "NIFTY MIDCAP LIQUID 15": {
+   "pChange": -2.02,
+   "last": 15196.65
+  },
+  "NIFTY MNC": {
+   "pChange": -0.4,
+   "last": 28416.15
+  },
+  "NIFTY PSE": {
+   "pChange": -0.24,
+   "last": 9075.35
+  },
+  "NIFTY SERVICES SECTOR": {
+   "pChange": 1.17,
+   "last": 30861.75
+  },
+  "NIFTY100 ESG SECTOR LEADERS": {
+   "pChange": 0.36,
+   "last": 3816.35
+  },
+  "NIFTY INDIA DIGITAL": {
+   "pChange": 0.26,
+   "last": 8602.1
+  },
+  "NIFTY100 ESG": {
+   "pChange": 0.24,
+   "last": 4751.05
+  },
+  "NIFTY INDIA MANUFACTURING": {
+   "pChange": -0.5,
+   "last": 14901.5
+  },
+  "NIFTY INDIA CORPORATE GROUP INDEX - TATA GROUP 25% CAP": {
+   "pChange": 0.54,
+   "last": 13876.9
+  },
+  "NIFTY500 MULTICAP INDIA MANUFACTURING 50:30:20": {
+   "pChange": -0.36,
+   "last": 15571.1
+  },
+  "NIFTY500 MULTICAP INFRASTRUCTURE 50:30:20": {
+   "pChange": -0.61,
+   "last": 13546.7
+  },
+  "NIFTY INDIA DEFENCE": {
+   "pChange": -2.01,
+   "last": 8704.45
+  },
+  "NIFTY INDIA TOURISM": {
+   "pChange": 0.29,
+   "last": 7613.45
+  },
+  "NIFTY CAPITAL MARKETS": {
+   "pChange": -1.46,
+   "last": 5127.9
+  },
+  "NIFTY EV & NEW AGE AUTOMOTIVE": {
+   "pChange": -1.09,
+   "last": 2907.7
+  },
+  "NIFTY INDIA NEW AGE CONSUMPTION": {
+   "pChange": -0.41,
+   "last": 11072.75
+  },
+  "NIFTY INDIA SELECT 5 CORPORATE GROUPS (MAATR)": {
+   "pChange": -0.38,
+   "last": 35945.85
+  },
+  "NIFTY MOBILITY": {
+   "pChange": -0.35,
+   "last": 21576.8
+  },
+  "NIFTY100 ENHANCED ESG": {
+   "pChange": 0.24,
+   "last": 4783.35
+  },
+  "NIFTY CORE HOUSING": {
+   "pChange": -0.87,
+   "last": 13964.75
+  },
+  "NIFTY HOUSING": {
+   "pChange": -0.09,
+   "last": 11079.75
+  },
+  "NIFTY IPO": {
+   "pChange": -1.63,
+   "last": 2269.7
+  },
+  "NIFTY MIDSMALL INDIA CONSUMPTION": {
+   "pChange": -0.55,
+   "last": 17087.85
+  },
+  "NIFTY NON-CYCLICAL CONSUMER": {
+   "pChange": 0.27,
+   "last": 14361.2
+  },
+  "NIFTY RURAL": {
+   "pChange": -0.58,
+   "last": 14062.9
+  },
+  "NIFTY SHARIAH 25": {
+   "pChange": 0.47,
+   "last": 7661.6
+  },
+  "NIFTY TRANSPORTATION & LOGISTICS": {
+   "pChange": -0.4,
+   "last": 23968.55
+  },
+  "NIFTY50 SHARIAH": {
+   "pChange": 1.34,
+   "last": 4194.75
+  },
+  "NIFTY500 SHARIAH": {
+   "pChange": 0.09,
+   "last": 6603.55
+  },
+  "NIFTY SME EMERGE": {
+   "pChange": -0.9,
+   "last": 14278.75
+  },
+  "NIFTY INDIA INTERNET": {
+   "pChange": -1.2,
+   "last": 1320.0
+  },
+  "NIFTY WAVES": {
+   "pChange": -1.63,
+   "last": 1811.65
+  },
+  "NIFTY INDIA INFRASTRUCTURE & LOGISTICS": {
+   "pChange": -0.73,
+   "last": 11114.95
+  },
+  "NIFTY INDIA RAILWAYS PSU": {
+   "pChange": -2.11,
+   "last": 2415.75
+  },
+  "NIFTY CONGLOMERATE 50": {
+   "pChange": -0.15,
+   "last": 13998.55
+  },
+  "NIFTY 8-13 YR G-SEC": {
+   "pChange": -0.09,
+   "last": 2981.23
+  },
+  "NIFTY 10 YR BENCHMARK G-SEC": {
+   "pChange": -0.18,
+   "last": 2609.33
+  },
+  "NIFTY 10 YR BENCHMARK G-SEC (CLEAN PRICE)": {
+   "pChange": -0.18,
+   "last": 840.73
+  },
+  "NIFTY 4-8 YR G-SEC INDEX": {
+   "pChange": -0.03,
+   "last": 3284.19
+  },
+  "NIFTY 11-15 YR G-SEC INDEX": {
+   "pChange": -0.09,
+   "last": 3294.35
+  },
+  "NIFTY 15 YR AND ABOVE G-SEC INDEX": {
+   "pChange": 0.01,
+   "last": 3473.29
+  },
+  "NIFTY COMPOSITE G-SEC INDEX": {
+   "pChange": -0.08,
+   "last": 3072.25
+  },
+  "NIFTY BHARAT BOND INDEX - APRIL 2030": {
+   "pChange": 0.02,
+   "last": 1597.89
+  },
+  "NIFTY BHARAT BOND INDEX - APRIL 2031": {
+   "pChange": 0.02,
+   "last": 1443.08
+  },
+  "NIFTY BHARAT BOND INDEX - APRIL 2032": {
+   "pChange": 0.02,
+   "last": 1303.05
+  },
+  "NIFTY BHARAT BOND INDEX - APRIL 2033": {
+   "pChange": 0.02,
+   "last": 1259.69
+  }
+ },
+ "lcuc": {
+  "window": "21 Oct\u201329 Oct",
+  "matches": [
+   {
+    "date": "2026-10-30",
+    "cat": "b",
+    "symbol": "RUNWALENTR",
+    "band": 5.0,
+    "prev_close": 204.0,
+    "open": 202.45,
+    "high": 214.2,
+    "low": 201.1,
+    "close": 209.35,
+    "uc": 214.2,
+    "dist_pct": 2.26,
+    "deliv_pct": 67.32,
+    "qty": 726764,
+    "turnover_lacs": 1519.37,
+    "lc_days": "28 Oct",
+    "lc_count": 1,
+    "window": "21 Oct\u201329 Oct"
+   },
+   {
+    "date": "2026-10-30",
+    "cat": "b",
+    "symbol": "ANNAPURNA",
+    "band": 20.0,
+    "prev_close": 102.7,
+    "open": 104.7,
+    "high": 123.24,
+    "low": 95.32,
+    "close": 119.17,
+    "uc": 123.24,
+    "dist_pct": 3.3,
+    "deliv_pct": 44.12,
+    "qty": 526222,
+    "turnover_lacs": 591.96,
+    "lc_days": "23 Oct",
+    "lc_count": 1,
+    "window": "21 Oct\u201329 Oct"
+   },
+   {
+    "date": "2026-10-30",
+    "cat": "b",
+    "symbol": "HEROMOTORS",
+    "band": 5.0,
+    "prev_close": 122.33,
+    "open": 128.44,
+    "high": 128.44,
+    "low": 122.16,
+    "close": 124.05,
+    "uc": 128.44,
+    "dist_pct": 3.42,
+    "deliv_pct": 33.99,
+    "qty": 22540663,
+    "turnover_lacs": 28506.79,
+    "lc_days": "21 Oct (lock), 22 Oct (lock), 23 Oct (lock), 26 Oct",
+    "lc_count": 4,
+    "window": "21 Oct\u201329 Oct"
+   },
+   {
+    "date": "2026-10-30",
+    "cat": "b",
+    "symbol": "XTRANET",
+    "band": 5.0,
+    "prev_close": 290.05,
+    "open": 304.55,
+    "high": 304.55,
+    "low": 279.1,
+    "close": 282.3,
+    "uc": 304.55,
+    "dist_pct": 7.31,
+    "deliv_pct": 50.88,
+    "qty": 1016238,
+    "turnover_lacs": 2983.1,
+    "lc_days": "21 Oct (lock), 23 Oct (lock), 26 Oct",
+    "lc_count": 3,
+    "window": "21 Oct\u201329 Oct"
+   },
+   {
+    "date": "2026-10-30",
+    "cat": "b",
+    "symbol": "BHAGERIA",
+    "band": 10.0,
+    "prev_close": 370.75,
+    "open": 389.0,
+    "high": 407.8,
+    "low": 360.0,
+    "close": 362.45,
+    "uc": 407.8,
+    "dist_pct": 11.12,
+    "deliv_pct": 39.38,
+    "qty": 909427,
+    "turnover_lacs": 3524.43,
+    "lc_days": "21 Oct",
+    "lc_count": 1,
+    "window": "21 Oct\u201329 Oct"
+   }
+  ]
+ }
 }
