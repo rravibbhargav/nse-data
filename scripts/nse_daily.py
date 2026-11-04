@@ -90,8 +90,22 @@ def prev_weekday(d):
 
 
 def find_today():
-    d = datetime.now(IST).date()
+    now = datetime.now(IST)
+    d = now.date()
     if STRICT:
+        # BUG FIX: GitHub Actions scheduled triggers can queue and start
+        # late. The cron fires at 18:15 IST, but if the run itself doesn't
+        # actually start until after midnight IST, `now.date()` has already
+        # rolled over to the NEXT calendar day. This job then searches for a
+        # bhavcopy on that future date (which never exists yet), times out,
+        # and silently reports "no trading data" for the wrong date --
+        # quietly skipping the real trading day it was meant to cover.
+        # A STRICT run starting in the early hours (well before NSE's own
+        # bhavcopy publish window) is almost certainly a delayed firing of
+        # the previous evening's job, not a legitimate run for that new day,
+        # so roll back to the trading day it was actually scheduled for.
+        if now.hour < 12:
+            d = d - timedelta(days=1)
         deadline = time.time() + 25 * 60
         while True:
             rows = get_bhav(d, retries=2) if d.weekday() < 5 else None
