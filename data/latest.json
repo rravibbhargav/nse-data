@@ -2,8 +2,8 @@
  "date_iso": "2026-11-12",
  "date_disp": "12-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-13T01:58:25.946009+05:30",
- "mode": "schedule",
+ "generated_at": "2026-11-13T02:16:29.774662+05:30",
+ "mode": "push",
  "breadth": {
   "total": 2748,
   "adv": 1536,
@@ -148,60 +148,9 @@
  },
  "price_band": {
   "ok": true,
-  "count": 10,
+  "count": 0,
   "first_run": false,
-  "changed": [
-   {
-    "symbol": "MILTON",
-    "old": "5",
-    "new": "2"
-   },
-   {
-    "symbol": "PKTEA",
-    "old": "5",
-    "new": "2"
-   },
-   {
-    "symbol": "TGL",
-    "old": "5",
-    "new": "2"
-   },
-   {
-    "symbol": "LAL",
-    "old": "20",
-    "new": "5"
-   },
-   {
-    "symbol": "MAKERSL",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "SILKFLEX",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "TECHLABS",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "FLEXITUFF",
-    "old": "20",
-    "new": "10"
-   },
-   {
-    "symbol": "JYOTISTRUC",
-    "old": "20",
-    "new": "10"
-   },
-   {
-    "symbol": "SPCENET",
-    "old": "20",
-    "new": "10"
-   }
-  ]
+  "changed": []
  },
  "sector_moves": {
   "NIFTY 50": {
