@@ -1,0 +1,8 @@
+date,symbol,industry,score,close,chg_pct,entry,sl,risk_pct,t1,t2,vol_ratio,rsi,adx,ret_1m,rs_excess,tight_range_pct,pct_from_52w,turnover_cr,breakout_20d,reasons
+2026-11-11,AXISBANK,Financial Services,nan,1336.4,1.96,1336.4,1200.0,10.21,1541.0,1677.4,1.68,68.7,23.0,6.1,nan,10.4,-5.8,919.2,True,"20D breakout, vol 1.7x, RS +nan%"
+2026-11-11,LALPATHLAB,Healthcare,nan,2028.7,0.61,2028.7,1856.5,8.49,2287.0,2459.2,1.74,62.7,24.0,4.9,nan,14.1,-2.4,60.0,False,"near 52W high, vol 1.7x, RS +nan%"
+2026-11-11,FEDERALBNK,Financial Services,nan,361.6,5.09,361.6,329.5,8.88,409.75,441.85,1.62,67.6,20.4,9.6,nan,6.5,-2.7,305.6,True,"20D breakout, near 52W high, tight base 6.5%, vol 1.6x, RS +nan%"
+2026-11-11,FLUOROCHEM,Chemicals,nan,4824.4,5.46,4824.4,4175.0,13.46,5798.5,6447.9,2.17,65.2,22.2,7.8,nan,13.5,-2.7,47.1,True,"20D breakout, near 52W high, vol 2.2x, RS +nan%"
+2026-11-11,INDIANB,Financial Services,nan,935.4,0.18,935.4,831.75,11.08,1090.88,1194.53,1.61,72.7,20.8,12.7,nan,12.6,-6.5,165.1,True,"20D breakout, vol 1.6x, RS +nan%"
+2026-11-11,SUNTV,Media Entertainment & Publication,nan,653.9,7.21,653.9,583.0,10.84,760.25,831.15,3.58,64.1,35.5,2.8,nan,14.9,-3.0,52.5,False,"near 52W high, vol 3.6x, RS +nan%"
+2026-11-11,TVSMOTOR,Automobile and Auto Components,nan,4560.0,1.2,4560.0,4070.0,10.75,5295.0,5785.0,1.85,74.5,26.5,17.9,nan,13.0,-1.6,315.4,True,"20D breakout, near 52W high, vol 1.8x, RS +nan%"
