@@ -324,6 +324,70 @@ def save(picks, scanned, idx_ret_1m, date_iso, date_disp):
                 w.writerow(r)
 
 
+ARCHIVE = "https://nsearchives.nseindia.com"
+
+
+def latest_bhav():
+    """Most recent NSE full bhavcopy (EQ series) -> (date, {symbol: row})."""
+    today = datetime.now(IST).date()
+    for back in range(0, 7):
+        d = today - timedelta(days=back)
+        if d.weekday() >= 5:
+            continue
+        t = curl_get(f"{ARCHIVE}/products/content/sec_bhavdata_full_{d.strftime('%d%m%Y')}.csv")
+        if not t:
+            continue
+        rows = [{(k or "").strip(): (v.strip() if isinstance(v, str) else v) for k, v in r.items()}
+                for r in csv.DictReader(io.StringIO(t))]
+        if not rows or rows[0].get("DATE1", "").lower() != d.strftime("%d-%b-%Y").lower():
+            continue
+        eq = {r["SYMBOL"]: r for r in rows if r.get("SERIES") == "EQ"}
+        log(f"NSE bhavcopy found for {d} ({len(eq)} EQ rows)")
+        return d, eq
+    log("NSE bhavcopy not available -> Yahoo data only")
+    return None, {}
+
+
+def patch_with_bhav(frames, bdate, bhav):
+    """Append the bhavcopy day to any symbol whose Yahoo data stops before it."""
+    if not bdate:
+        return frames, 0
+    ts = pd.Timestamp(bdate)
+    patched = 0
+    for sym, df in list(frames.items()):
+        r = bhav.get(sym)
+        if r is None:
+            continue
+        last = df.index[-1]
+        last_d = last.date() if hasattr(last, "date") else last
+        if last_d >= bdate:
+            continue
+        try:
+            row = {"Open": float(r["OPEN_PRICE"]), "High": float(r["HIGH_PRICE"]),
+                   "Low": float(r["LOW_PRICE"]), "Close": float(r["CLOSE_PRICE"]),
+                   "Adj Close": float(r["CLOSE_PRICE"]), "Volume": float(r["TTL_TRD_QNTY"])}
+        except (KeyError, ValueError):
+            continue
+        idx_ts = ts.tz_localize(last.tz) if getattr(last, "tz", None) is not None else ts
+        new = pd.DataFrame([row], index=pd.DatetimeIndex([idx_ts]))
+        frames[sym] = pd.concat([df, new[[c for c in df.columns if c in new.columns]]])
+        patched += 1
+    log(f"patched {patched} symbols with NSE bhavcopy for {bdate}")
+    return frames, patched
+
+
+def already_done(date_iso):
+    """Automatic runs skip if this trading day was already scanned and sent.
+    Only a manual 'Run workflow' (workflow_dispatch) forces a resend."""
+    if os.environ.get("MODE", "schedule") == "workflow_dispatch":
+        return False
+    try:
+        old = json.load(open(os.path.join(OUT_DIR, "swing_scan.json")))
+        return old.get("date_iso") == date_iso
+    except Exception:
+        return False
+
+
 def main():
     universe = load_universe()
     log(f"universe: {len(universe)} symbols")
@@ -331,8 +395,19 @@ def main():
     log(f"price data for {len(frames)} symbols")
     if len(frames) < 200:
         sys.exit("Too few symbols downloaded — aborting (yfinance issue?)")
+    bdate, bhav = latest_bhav()
+    frames, patched = patch_with_bhav(frames, bdate, bhav)
     last = max(df.index[-1] for df in frames.values())
     date_iso, date_disp = last.strftime("%Y-%m-%d"), last.strftime("%d %b %Y")
+    if already_done(date_iso):
+        log(f"{date_iso} already scanned and sent -> skipping this backup run")
+        return
+    # index return would be stale if Yahoo lacked the latest day -> use universe median
+    try:
+        if idx is not None and patched and idx.dropna(subset=["Close"]).index[-1] < last:
+            idx = None
+    except Exception:
+        idx = None
     # keep only symbols that have today's bar
     frames = {s: d for s, d in frames.items() if d.index[-1] == last}
     picks, scanned, idx_ret_1m = run_scan(frames, idx, universe)
