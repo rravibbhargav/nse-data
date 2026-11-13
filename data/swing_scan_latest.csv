@@ -1,4 +1,1 @@
 date,symbol,industry,score,close,chg_pct,entry,sl,risk_pct,t1,t2,vol_ratio,rsi,adx,ret_1m,rs_excess,tight_range_pct,pct_from_52w,turnover_cr,breakout_20d,reasons
-2026-11-11,TVSMOTOR,Automobile and Auto Components,38.2,4560.0,1.2,4560.0,4070.0,10.75,5295.0,5785.0,1.85,74.5,26.5,17.9,9.2,13.0,-1.6,315.4,True,"20D breakout, near 52W high, vol 1.8x, RS +9.2%"
-2026-11-11,FEDERALBNK,Financial Services,38.1,361.6,5.09,361.6,329.5,8.88,409.75,441.85,1.62,67.6,20.4,9.6,0.8,6.5,-2.7,305.6,True,"20D breakout, near 52W high, tight base 6.5%, vol 1.6x, RS +0.8%"
-2026-11-11,INDIANB,Financial Services,28.2,935.4,0.18,935.4,831.75,11.08,1090.88,1194.53,1.61,72.7,20.8,12.7,4.0,12.6,-6.5,165.1,True,"20D breakout, vol 1.6x, RS +4.0%"
