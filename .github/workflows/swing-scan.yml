@@ -2,6 +2,8 @@ name: SKT swing scanner
 on:
   schedule:
     - cron: '20 13 * * 1-5'   # 18:50 IST, Monday to Friday (after EOD data settles)
+    - cron: '30 15 * * 1-5'   # 21:00 IST backup (GitHub often delays schedules)
+    - cron: '0 18 * * 1-5'    # 23:30 IST backup; backups skip if the day is already sent
   workflow_dispatch:
   push:
     paths:
@@ -28,6 +30,7 @@ jobs:
         run: pip install --quiet yfinance pandas numpy
       - name: Run swing scanner
         env:
+          MODE: ${{ github.event_name }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 scripts/swing_scanner.py
