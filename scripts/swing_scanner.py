@@ -377,9 +377,9 @@ def patch_with_bhav(frames, bdate, bhav):
 
 
 def already_done(date_iso):
-    """Automatic runs skip if this trading day was already scanned and sent.
-    Only a manual 'Run workflow' (workflow_dispatch) forces a resend."""
-    if os.environ.get("MODE", "schedule") == "workflow_dispatch":
+    """Any run skips if this trading day was already scanned and sent,
+    unless 'Run workflow' is started with force = true."""
+    if os.environ.get("FORCE", "false").lower() == "true":
         return False
     try:
         old = json.load(open(os.path.join(OUT_DIR, "swing_scan.json")))
