@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-13",
- "date_disp": "13-11-2026",
+ "date_iso": "2026-11-16",
+ "date_disp": "16-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-14T01:34:10.817271+05:30",
- "mode": "schedule",
+ "generated_at": "2026-11-16T22:28:15.847606+05:30",
+ "mode": "push",
  "breadth": {
-  "total": 2744,
-  "adv": 939,
-  "dec": 1777,
-  "unch": 28,
-  "avg_move": -0.34,
-  "pct_red": 64.8,
-  "ad_ratio": 0.53,
-  "turnover_lakh_cr": 1.18
+  "total": 2760,
+  "adv": 792,
+  "dec": 1937,
+  "unch": 31,
+  "avg_move": -1.17,
+  "pct_red": 70.2,
+  "ad_ratio": 0.41,
+  "turnover_lakh_cr": 1.11
  },
  "week52": {
   "highs_count": 0,
@@ -32,86 +32,41 @@
  },
  "price_band": {
   "ok": true,
-  "count": 16,
+  "count": 7,
   "first_run": false,
   "changed": [
    {
-    "symbol": "CAPTRUST",
-    "old": "2",
-    "new": "5"
-   },
-   {
-    "symbol": "KJMCFIN",
+    "symbol": "FMNL",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "PAPADMALJI",
+    "symbol": "PROZONER",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "STYLEBAAZA",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "VELJAN",
-    "old": "2",
+    "symbol": "TRANSWORLD",
+    "old": "10",
     "new": "5"
    },
    {
-    "symbol": "AARTISURF",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "TIRUPATIFL",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "3IINFOLTD",
+    "symbol": "KAMAHOLD",
     "old": "5",
     "new": "20"
    },
    {
-    "symbol": "CNL",
-    "old": "10",
-    "new": "20"
-   },
-   {
-    "symbol": "DELPHIFX",
+    "symbol": "MAHSCOOTER",
     "old": "5",
     "new": "20"
    },
    {
-    "symbol": "GOLDTECH",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "MOLDTECH",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "MTARTECH",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "NRL",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "RPPL",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "SAAKSHI",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "SPECIALITY",
+    "symbol": "TVSHLTD",
     "old": "5",
     "new": "20"
    }
@@ -119,46 +74,7 @@
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "03 Nov\u201312 Nov",
-  "matches": [
-   {
-    "date": "2026-11-13",
-    "cat": "a",
-    "symbol": "BNAGROCHEM",
-    "band": 5.0,
-    "prev_close": 154.92,
-    "open": 159.0,
-    "high": 162.66,
-    "low": 158.68,
-    "close": 162.66,
-    "uc": 162.66,
-    "dist_pct": 0.0,
-    "deliv_pct": 74.5,
-    "qty": 101471,
-    "turnover_lacs": 164.81,
-    "lc_days": "05 Nov",
-    "lc_count": 1,
-    "window": "03 Nov\u201312 Nov"
-   },
-   {
-    "date": "2026-11-13",
-    "cat": "b",
-    "symbol": "E2E",
-    "band": 5.0,
-    "prev_close": 540.75,
-    "open": 549.0,
-    "high": 567.75,
-    "low": 535.8,
-    "close": 560.05,
-    "uc": 567.75,
-    "dist_pct": 1.36,
-    "deliv_pct": 44.12,
-    "qty": 2796884,
-    "turnover_lacs": 15614.87,
-    "lc_days": "06 Nov",
-    "lc_count": 1,
-    "window": "03 Nov\u201312 Nov"
-   }
-  ]
+  "window": "04 Nov\u201313 Nov",
+  "matches": []
  }
 }
