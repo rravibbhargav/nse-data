@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-16",
- "date_disp": "16-11-2026",
+ "date_iso": "2026-11-17",
+ "date_disp": "17-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-17T04:02:14.081647+05:30",
+ "generated_at": "2026-11-18T02:51:15.145538+05:30",
  "mode": "schedule",
  "breadth": {
   "total": 2760,
-  "adv": 792,
-  "dec": 1937,
-  "unch": 31,
-  "avg_move": -1.17,
-  "pct_red": 70.2,
-  "ad_ratio": 0.41,
-  "turnover_lakh_cr": 1.11
+  "adv": 1318,
+  "dec": 1404,
+  "unch": 38,
+  "avg_move": 0.05,
+  "pct_red": 50.9,
+  "ad_ratio": 0.94,
+  "turnover_lakh_cr": 1.17
  },
  "week52": {
   "highs_count": 0,
@@ -32,41 +32,56 @@
  },
  "price_band": {
   "ok": true,
-  "count": 7,
+  "count": 10,
   "first_run": false,
   "changed": [
    {
-    "symbol": "FMNL",
+    "symbol": "BHAGYANGR",
+    "old": "5",
+    "new": "2"
+   },
+   {
+    "symbol": "SUPREMEENG",
+    "old": "5",
+    "new": "2"
+   },
+   {
+    "symbol": "APEXECO",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "PROZONER",
+    "symbol": "BMETRICS",
     "old": "20",
     "new": "5"
    },
    {
-    "symbol": "STYLEBAAZA",
+    "symbol": "FLEXITUFF",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "TRANSWORLD",
+    "symbol": "SPCENET",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "KAMAHOLD",
+    "symbol": "HINDOILEXP",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "GFLLIMITED",
     "old": "5",
     "new": "20"
    },
    {
-    "symbol": "MAHSCOOTER",
+    "symbol": "NSIL",
     "old": "5",
     "new": "20"
    },
    {
-    "symbol": "TVSHLTD",
+    "symbol": "PILANIINVS",
     "old": "5",
     "new": "20"
    }
@@ -74,7 +89,27 @@
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "04 Nov\u201313 Nov",
-  "matches": []
+  "window": "05 Nov\u201316 Nov",
+  "matches": [
+   {
+    "date": "2026-11-17",
+    "cat": "b",
+    "symbol": "SMLMAH",
+    "band": 5.0,
+    "prev_close": 5092.8,
+    "open": 5103.0,
+    "high": 5347.4,
+    "low": 5103.0,
+    "close": 5347.4,
+    "uc": 5347.0,
+    "dist_pct": -0.01,
+    "deliv_pct": 50.76,
+    "qty": 117841,
+    "turnover_lacs": 6230.17,
+    "lc_days": "09 Nov",
+    "lc_count": 1,
+    "window": "05 Nov\u201316 Nov"
+   }
+  ]
  }
 }
