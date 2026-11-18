@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-17",
- "date_disp": "17-11-2026",
+ "date_iso": "2026-11-18",
+ "date_disp": "18-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-18T02:51:15.145538+05:30",
+ "generated_at": "2026-11-19T02:24:45.275353+05:30",
  "mode": "schedule",
  "breadth": {
-  "total": 2760,
-  "adv": 1318,
-  "dec": 1404,
-  "unch": 38,
-  "avg_move": 0.05,
-  "pct_red": 50.9,
-  "ad_ratio": 0.94,
-  "turnover_lakh_cr": 1.17
+  "total": 2756,
+  "adv": 693,
+  "dec": 2035,
+  "unch": 28,
+  "avg_move": -0.87,
+  "pct_red": 73.8,
+  "ad_ratio": 0.34,
+  "turnover_lakh_cr": 1.07
  },
  "week52": {
   "highs_count": 0,
@@ -32,56 +32,31 @@
  },
  "price_band": {
   "ok": true,
-  "count": 10,
+  "count": 5,
   "first_run": false,
   "changed": [
    {
-    "symbol": "BHAGYANGR",
+    "symbol": "UHTL",
     "old": "5",
     "new": "2"
    },
    {
-    "symbol": "SUPREMEENG",
-    "old": "5",
-    "new": "2"
-   },
-   {
-    "symbol": "APEXECO",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "BMETRICS",
+    "symbol": "BALAJIPHOS",
     "old": "20",
     "new": "5"
    },
    {
-    "symbol": "FLEXITUFF",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "SPCENET",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "HINDOILEXP",
+    "symbol": "DCAL",
     "old": "20",
     "new": "10"
    },
    {
-    "symbol": "GFLLIMITED",
+    "symbol": "ENNATURE",
     "old": "5",
     "new": "20"
    },
    {
-    "symbol": "NSIL",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "PILANIINVS",
+    "symbol": "IGLSPIRITS",
     "old": "5",
     "new": "20"
    }
@@ -89,26 +64,64 @@
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "05 Nov\u201316 Nov",
+  "window": "06 Nov\u201317 Nov",
   "matches": [
    {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "cat": "b",
+    "symbol": "E2E",
+    "band": 5.0,
+    "prev_close": 505.75,
+    "open": 515.0,
+    "high": 531.0,
+    "low": 501.2,
+    "close": 526.45,
+    "uc": 531.0,
+    "dist_pct": 0.86,
+    "deliv_pct": 43.39,
+    "qty": 1915087,
+    "turnover_lacs": 9911.94,
+    "lc_days": "06 Nov, 16 Nov (lock), 17 Nov",
+    "lc_count": 3,
+    "window": "06 Nov\u201317 Nov"
+   },
+   {
+    "date": "2026-11-18",
+    "cat": "b",
+    "symbol": "BIRLACABLE",
+    "band": 5.0,
+    "prev_close": 294.3,
+    "open": 295.8,
+    "high": 309.0,
+    "low": 294.8,
+    "close": 302.6,
+    "uc": 309.0,
+    "dist_pct": 2.07,
+    "deliv_pct": 40.3,
+    "qty": 443125,
+    "turnover_lacs": 1353.2,
+    "lc_days": "09 Nov (lock), 11 Nov, 16 Nov (lock), 17 Nov",
+    "lc_count": 4,
+    "window": "06 Nov\u201317 Nov"
+   },
+   {
+    "date": "2026-11-18",
+    "cat": "c",
     "symbol": "SMLMAH",
     "band": 5.0,
-    "prev_close": 5092.8,
-    "open": 5103.0,
-    "high": 5347.4,
-    "low": 5103.0,
-    "close": 5347.4,
-    "uc": 5347.0,
-    "dist_pct": -0.01,
-    "deliv_pct": 50.76,
-    "qty": 117841,
-    "turnover_lacs": 6230.17,
+    "prev_close": 5347.4,
+    "open": 5440.0,
+    "high": 5611.0,
+    "low": 5440.0,
+    "close": 5555.9,
+    "uc": 5614.5,
+    "dist_pct": 1.04,
+    "deliv_pct": 49.47,
+    "qty": 106640,
+    "turnover_lacs": 5894.13,
     "lc_days": "09 Nov",
     "lc_count": 1,
-    "window": "05 Nov\u201316 Nov"
+    "window": "06 Nov\u201317 Nov"
    }
   ]
  }
