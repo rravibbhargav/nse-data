@@ -1,2 +1,1 @@
 date,symbol,industry,score,close,chg_pct,entry,sl,risk_pct,t1,t2,vol_ratio,rsi,adx,ret_1m,rs_excess,tight_range_pct,pct_from_52w,turnover_cr,breakout_20d,reasons
-2026-11-17,CANBK,Financial Services,42.2,134.0,1.21,134.0,117.01,12.68,159.48,176.48,2.01,68.4,26.1,14.4,7.0,14.4,-17.7,339.7,True,"20D breakout, vol 2.0x, RS +7.0%"
