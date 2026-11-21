@@ -59,6 +59,10 @@ P = dict(
     # --- volume says the opposite ---
     VOL_MULT=2.5,              # today's volume vs 20-day average (2y sweep: best expectancy)
     MIN_TURNOVER_CR=2.0,       # today's traded value, Rs crore (liquidity)
+    # --- delivery says the buying was real, not intraday jobbing ---
+    DELIV_RATIO_MIN=1.3,       # today's delivery % vs its own 20-day average
+    DELIV_LOOKBACK=21,         # trading days of bhavcopy kept in the cache
+
     # --- absorption proof inside the candle ---
     CLOSE_POS_MIN=0.45,        # (close - low) / (high - low)
     LOWER_WICK_MIN=0.40,       # lower wick as share of the day's range
@@ -329,6 +333,98 @@ def fundamentals(sym, industry):
                 fund_fails="; ".join(fails), fund_warns="; ".join(warns))
 
 
+# ------------------------- NSE delivery percentage --------------------------
+DELIV_CACHE = os.path.join(OUT_DIR, "delivery_history.csv")
+KEEP_DAYS = 45          # trading days retained in the cache file
+
+
+def _bhav_deliv(d):
+    """{symbol: delivery %} from one day's full bhavcopy, or None."""
+    t = sw.curl_get(f"{sw.ARCHIVE}/products/content/sec_bhavdata_full_"
+                    f"{d.strftime('%d%m%Y')}.csv")
+    if not t:
+        return None
+    rows = [{(k or "").strip(): (v.strip() if isinstance(v, str) else v)
+             for k, v in r.items()} for r in csv.DictReader(io.StringIO(t))]
+    if not rows or rows[0].get("DATE1", "").lower() != d.strftime("%d-%b-%Y").lower():
+        return None
+    out = {}
+    for r in rows:
+        if r.get("SERIES") != "EQ":
+            continue
+        try:
+            out[r["SYMBOL"]] = float(r["DELIV_PER"])
+        except (KeyError, ValueError, TypeError):
+            continue
+    return out
+
+
+def delivery_history(upto_date):
+    """{symbol: [(date, deliv%), ...]} for the last DELIV_LOOKBACK trading days,
+    ending at upto_date. Cached in the repo so each run fetches only what is
+    missing (normally one bhavcopy)."""
+    cache = {}          # date_iso -> {symbol: pct}
+    if os.path.exists(DELIV_CACHE):
+        with open(DELIV_CACHE, newline="") as f:
+            for r in csv.reader(f):
+                if len(r) != 3 or r[0] == "date":
+                    continue
+                try:
+                    cache.setdefault(r[0], {})[r[1]] = float(r[2])
+                except ValueError:
+                    pass
+    wanted, d, guard = [], upto_date, 0
+    while len(wanted) < P["DELIV_LOOKBACK"] and guard < 70:
+        guard += 1
+        if d.weekday() < 5:
+            wanted.append(d)
+        d -= timedelta(days=1)
+    fetched = 0
+    for day in wanted:
+        iso = day.isoformat()
+        if iso in cache:
+            continue
+        got = _bhav_deliv(day)
+        if got:
+            cache[iso] = got
+            fetched += 1
+        else:
+            cache[iso] = {}          # holiday or missing: remember, don't refetch
+    log(f"delivery cache: {len(cache)} days stored, {fetched} downloaded this run")
+    for iso in sorted(cache)[:-KEEP_DAYS]:
+        cache.pop(iso)
+    with open(DELIV_CACHE, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "symbol", "deliv_per"])
+        for iso in sorted(cache):
+            for sym, pct in sorted(cache[iso].items()):
+                w.writerow([iso, sym, pct])
+    series = {}
+    for iso in sorted(cache):
+        for sym, pct in cache[iso].items():
+            series.setdefault(sym, []).append((iso, pct))
+    return series
+
+
+def delivery_check(series, sym, date_iso):
+    """Today's delivery % against its own 20-day average."""
+    hist = series.get(sym) or []
+    today = next((p for d, p in hist if d == date_iso), None)
+    prior = [p for d, p in hist if d < date_iso][-20:]
+    if today is None or len(prior) < 10:
+        return dict(deliv_pct=today, deliv_avg=None, deliv_ratio=None,
+                    deliv_ok=None, deliv_score=0.0)
+    avg = sum(prior) / len(prior)
+    ratio = today / avg if avg > 0 else None
+    if ratio is None:
+        return dict(deliv_pct=round(today, 1), deliv_avg=None, deliv_ratio=None,
+                    deliv_ok=None, deliv_score=0.0)
+    return dict(deliv_pct=round(today, 1), deliv_avg=round(avg, 1),
+                deliv_ratio=round(ratio, 2),
+                deliv_ok=bool(ratio >= P["DELIV_RATIO_MIN"]),
+                deliv_score=round(min(max(ratio - 1.0, 0.0), 1.5) / 1.5 * 12, 1))
+
+
 # -------------------------- Dhan intraday check ----------------------------
 def dhan_token():
     return (os.environ.get("DHAN_ACCESS_TOKEN") or "").strip()
@@ -437,6 +533,7 @@ def dhan_confirm(candles):
 COLS = ["date", "symbol", "industry", "sector", "score", "fund_grade", "close", "chg_pct",
         "open", "high", "low", "entry", "sl", "risk_pct", "t1", "t2", "rr_t2",
         "vol_ratio", "turnover_cr", "close_pos", "lower_wick", "open_high_gap_pct",
+        "deliv_pct", "deliv_avg", "deliv_ratio",
         "above_52w_low_pct", "from_52w_high_pct", "days_since_52w_low", "rsi",
         "mcap_cr", "roe", "de", "pe", "pb", "profit_margin", "sales_growth",
         "profit_growth", "headroom_r", "dhan_confirm", "dhan_above_vwap",
@@ -476,9 +573,10 @@ def _f(x, suffix=""):
 
 def telegram_text(date_disp, picks, stats):
     head = (f"<b>🔄 SKT 52W-Low Reversal Scan — {date_disp}</b>\n"
-            f"Scanned {stats['scanned']} | open=high + vol absorption: {stats['tech_pass']} "
+            f"Scanned {stats['scanned']} | absorption + delivery pass: {stats['tech_pass']} "
             f"| fundamentally sound: {stats['fund_pass']}\n"
-            f"Setup: 52W low pe open=high (dikhawa) + {P['VOL_MULT']}x volume pe absorption\n\n")
+            f"Setup: 52W low pe open=high (dikhawa) + {P['VOL_MULT']}x volume absorption "
+            f"+ delivery {P['DELIV_RATIO_MIN']}x\n\n")
     if not picks:
         return head + ("Aaj ek bhi stock poore filters pass nahi kar paya. "
                        "Is setup me patience hi edge hai. 🙂")
@@ -490,7 +588,9 @@ def telegram_text(date_disp, picks, stats):
             f"score {p['score']} | fund {p['fund_grade']}\n"
             f"   CMP ₹{p['close']} ({p['chg_pct']:+.1f}%) | 52W low se +{p['above_52w_low_pct']}%\n"
             f"   Vol {p['vol_ratio']}x | wick {int(p['lower_wick'] * 100)}% | "
-            f"close {int(p['close_pos'] * 100)}% of range | VWAP: {dh}\n"
+            f"close {int(p['close_pos'] * 100)}% of range\n"
+            f"   Delivery {_f(p.get('deliv_pct'), '%')} vs avg {_f(p.get('deliv_avg'), '%')} "
+            f"= {_f(p.get('deliv_ratio'), 'x')} | VWAP: {dh}\n"
             f"   <b>Entry &gt; ₹{p['entry']}</b> | SL ₹{p['sl']} ({p['risk_pct']}%) | "
             f"T1 ₹{p['t1']} | T2 ₹{p['t2']} (1:{p['rr_t2']})\n"
             f"   mcap ₹{p['mcap_cr']:.0f}cr | ROE {_f(p['roe'], '%')} | D/E {_f(p['de'])}"
@@ -540,6 +640,22 @@ def main():
     tech.sort(key=lambda x: -x["tech_score"])
     log(f"technical pass: {len(tech)} -> {[t['symbol'] for t in tech]}")
 
+    # ---- delivery screen: was the volume real buying? ----
+    deliv_pass = []
+    if tech:
+        series = delivery_history(last.date() if hasattr(last, "date") else last)
+        for t in tech:
+            t.update(delivery_check(series, t["symbol"], date_iso))
+            if t["deliv_ok"] is False:
+                log(f"  {t['symbol']:<12} DROP: delivery {t['deliv_pct']}% vs avg "
+                    f"{t['deliv_avg']}% = {t['deliv_ratio']}x < {P['DELIV_RATIO_MIN']}x")
+                continue
+            if t["deliv_ok"] is None:
+                log(f"  {t['symbol']:<12} delivery data unavailable -> kept, unconfirmed")
+            deliv_pass.append(t)
+        log(f"delivery pass: {len(deliv_pass)}/{len(tech)}")
+    tech = deliv_pass
+
     # ---- fundamental screen (only the survivors) ----
     picks = []
     for t in tech[:40]:
@@ -572,12 +688,14 @@ def main():
     # ---- final score & reasons ----
     for p in picks:
         p["score"] = round(p["tech_score"] + p.get("fund_score", 0)
-                           + p.get("dhan_score", 0), 1)
+                           + p.get("deliv_score", 0) + p.get("dhan_score", 0), 1)
         bits = [f"52W low +{p['above_52w_low_pct']}%",
                 f"open=high ({p['open_high_gap_pct']}%)",
                 f"vol {p['vol_ratio']}x",
                 f"wick {int(p['lower_wick'] * 100)}%",
                 f"close {int(p['close_pos'] * 100)}% of range"]
+        if p.get("deliv_ratio"):
+            bits.append(f"delivery {p['deliv_pct']}% ({p['deliv_ratio']}x avg)")
         if p.get("dhan_confirm") not in (None, "n/a", "no-data"):
             bits.append(f"VWAP {p['dhan_confirm']}")
         bits.append(f"fund {p['fund_grade']}")
@@ -585,6 +703,7 @@ def main():
     picks.sort(key=lambda x: -x["score"])
 
     stats = dict(scanned=len(frames), tech_pass=len(tech), fund_pass=len(picks),
+                 deliv_ratio_min=P["DELIV_RATIO_MIN"],
                  dhan=bool(dhan_token()))
     for p in picks[:P["TOP_N"]]:
         log(f"  {p['symbol']:<12} score {p['score']:>5}  entry {p['entry']:>9}  "

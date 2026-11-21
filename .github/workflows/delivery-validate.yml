@@ -1,0 +1,45 @@
+name: Delivery filter validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_window:
+        description: 'Days allowed to cross the signal-day high'
+        default: '5'
+      trade_window:
+        description: 'Days allowed to reach T1 before giving up'
+        default: '20'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: delivery-validate
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install libraries
+        run: pip install --quiet yfinance pandas numpy
+      - name: Run delivery validation
+        env:
+          TRIGGER_WINDOW: ${{ inputs.trigger_window }}
+          TRADE_WINDOW: ${{ inputs.trade_window }}
+        run: python3 scripts/delivery_validate.py
+      - name: Save results
+        run: |
+          git config user.name "nse-bot"
+          git config user.email "nse-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Delivery validation $(TZ=Asia/Kolkata date +%F)" || echo "nothing to commit"
+          git pull --rebase -X theirs
+          git push
