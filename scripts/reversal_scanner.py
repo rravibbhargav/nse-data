@@ -57,7 +57,8 @@ P = dict(
     OPEN_HIGH_TOL_PCT=0.35,    # (high - open) / open <= X%  -> open is the high
     MUST_CLOSE_BELOW_OPEN=True,
     # --- volume says the opposite ---
-    VOL_MULT=2.5,              # today's volume vs 20-day average (2y sweep: best expectancy)
+    VOL_MULT=2.5,              # main tier: 2y sweep's best expectancy (+0.22R)
+    WATCH_VOL_MULT=2.0,        # watchlist tier: 2.0-2.5x, backtest expectancy ~0
     MIN_TURNOVER_CR=2.0,       # today's traded value, Rs crore (liquidity)
     # --- delivery says the buying was real, not intraday jobbing ---
     DELIV_RATIO_MIN=1.3,       # today's delivery % vs its own 20-day average
@@ -159,8 +160,9 @@ def analyse(sym, df, industry):
     if not np.isfinite(vol20) or vol20 <= 0:
         return None
     vol_ratio = vol / vol20
-    if vol_ratio < P["VOL_MULT"]:
+    if vol_ratio < P["WATCH_VOL_MULT"]:
         return None
+    tier = "MAIN" if vol_ratio >= P["VOL_MULT"] else "WATCH"
     turnover_cr = close * vol / 1e7
     if turnover_cr < P["MIN_TURNOVER_CR"]:
         return None
@@ -226,7 +228,7 @@ def analyse(sym, df, industry):
     )
 
     return dict(
-        symbol=sym, industry=industry,
+        symbol=sym, industry=industry, tier=tier,
         close=round(close, 2), open=round(open_, 2), high=round(high, 2),
         low=round(low, 2), chg_pct=round(chg_pct, 2),
         open_high_gap_pct=round(open_high_gap, 3),
@@ -533,7 +535,7 @@ def dhan_confirm(candles):
 
 
 # --------------------------------- output ----------------------------------
-COLS = ["date", "symbol", "industry", "sector", "score", "fund_grade", "close", "chg_pct",
+COLS = ["date", "symbol", "tier", "industry", "sector", "score", "fund_grade", "close", "chg_pct",
         "open", "high", "low", "entry", "sl", "risk_pct", "t1", "t2", "rr_t2",
         "vol_ratio", "turnover_cr", "close_pos", "lower_wick", "open_high_gap_pct",
         "deliv_pct", "deliv_avg", "deliv_ratio",
@@ -547,10 +549,15 @@ def save(picks, stats, date_iso, date_disp):
     os.makedirs(OUT_DIR, exist_ok=True)
     out = dict(date_iso=date_iso, date_disp=date_disp,
                generated_at=datetime.now(IST).isoformat(timespec="seconds"),
-               params=P, stats=stats, picks=picks[:P["TOP_N"]], all_passed=len(picks))
+               params=P, stats=stats,
+               picks=[p for p in picks if p.get("tier") == "MAIN"][:P["TOP_N"]],
+               watchlist=[p for p in picks if p.get("tier") == "WATCH"][:6],
+               all_passed=len(picks))
     json.dump(out, open(os.path.join(OUT_DIR, "reversal_scan.json"), "w"), indent=1,
               default=str)
-    rows = [[date_iso] + [p.get(c, "") for c in COLS[1:]] for p in picks[:P["TOP_N"]]]
+    keep = ([p for p in picks if p.get("tier") == "MAIN"][:P["TOP_N"]]
+            + [p for p in picks if p.get("tier") == "WATCH"][:6])
+    rows = [[date_iso] + [p.get(c, "") for c in COLS[1:]] for p in keep]
     with open(os.path.join(OUT_DIR, "reversal_scan_latest.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(COLS)
@@ -574,19 +581,11 @@ def _f(x, suffix=""):
     return "n/a" if x is None else f"{x}{suffix}"
 
 
-def telegram_text(date_disp, picks, stats):
-    head = (f"<b>🔄 SKT 52W-Low Reversal Scan — {date_disp}</b>\n"
-            f"Scanned {stats['scanned']} | absorption + delivery pass: {stats['tech_pass']} "
-            f"| fundamentally sound: {stats['fund_pass']}\n"
-            f"Setup: 52W low pe open=high (dikhawa) + {P['VOL_MULT']}x volume absorption "
-            f"+ delivery {P['DELIV_RATIO_MIN']}x\n\n")
-    if not picks:
-        return head + ("Aaj ek bhi stock poore filters pass nahi kar paya. "
-                       "Is setup me patience hi edge hai. 🙂")
-    lines = []
-    for i, p in enumerate(picks[:P["TOP_N"]], 1):
+def _pick_lines(picks):
+    out = []
+    for i, p in enumerate(picks, 1):
         dh = p.get("dhan_confirm") or "n/a"
-        lines.append(
+        out.append(
             f"<b>{i}. {p['symbol']}</b> ({(p.get('industry') or '')[:16]}) — "
             f"score {p['score']} | fund {p['fund_grade']}\n"
             f"   CMP ₹{p['close']} ({p['chg_pct']:+.1f}%) | 52W low se +{p['above_52w_low_pct']}%\n"
@@ -598,10 +597,38 @@ def telegram_text(date_disp, picks, stats):
             f"T1 ₹{p['t1']} | T2 ₹{p['t2']} (1:{p['rr_t2']})\n"
             f"   mcap ₹{p['mcap_cr']:.0f}cr | ROE {_f(p['roe'], '%')} | D/E {_f(p['de'])}"
             + (f" | ⚠ {p['fund_warns']}" if p.get("fund_warns") else ""))
+    return out
+
+
+def telegram_text(date_disp, picks, stats):
+    main = [p for p in picks if p.get("tier") == "MAIN"][:P["TOP_N"]]
+    watch = [p for p in picks if p.get("tier") == "WATCH"][:6]
+    head = (f"<b>🔄 SKT 52W-Low Reversal Scan — {date_disp}</b>\n"
+            f"Scanned {stats['scanned']} | absorption + delivery pass: {stats['tech_pass']} "
+            f"| fundamentally sound: {stats['fund_pass']}\n"
+            f"Setup: 52W low pe open=high (dikhawa) + volume absorption "
+            f"+ delivery {P['DELIV_RATIO_MIN']}x\n\n")
+    if not main and not watch:
+        return head + ("Aaj ek bhi stock poore filters pass nahi kar paya. "
+                       "Is setup me patience hi edge hai. 🙂")
+    body = ""
+    if main:
+        body += (f"<b>━━ TRADE KARNE LAYAK (volume {P['VOL_MULT']}x+) ━━</b>\n"
+                 + "\n\n".join(_pick_lines(main)))
+    else:
+        body += f"<b>━━ TRADE KARNE LAYAK (volume {P['VOL_MULT']}x+) ━━</b>\nAaj koi nahi."
+    if watch:
+        body += ("\n\n<b>━━ ⚠️ SIRF WATCHLIST (volume "
+                 f"{P['WATCH_VOL_MULT']}–{P['VOL_MULT']}x) ━━</b>\n"
+                 "<i>Saavdhan: 2 saal ke backtest me is kam-volume tier ka expectancy "
+                 "shoonya tha (29 trades: 11 target, 17 stop-loss, net −0.02R). Matlab "
+                 "ispe trade lene se koi edge nahi mila. Yahan sirf nazar rakhiye — "
+                 "agar aap lete hi hain to position aadhi rakhein.</i>\n\n"
+                 + "\n\n".join(_pick_lines(watch)))
     foot = ("\n\n<i>Counter-trend setup hai: entry sirf tab jab price us din ka high "
             "cross kare (kal ya uske baad), warna setup fail. SL closing basis pe, "
             "position size risk % se. Research shortlist only, not a recommendation.</i>")
-    return head + "\n\n".join(lines) + foot
+    return head + body + foot
 
 
 def already_done(date_iso):
@@ -723,6 +750,8 @@ def main():
     picks.sort(key=lambda x: -x["score"])
 
     stats = dict(scanned=len(frames), tech_pass=len(tech), fund_pass=len(picks),
+                 main_tier=sum(1 for p in picks if p.get("tier") == "MAIN"),
+                 watch_tier=sum(1 for p in picks if p.get("tier") == "WATCH"),
                  deliv_ratio_min=P["DELIV_RATIO_MIN"],
                  dhan=bool(dhan_token()))
     for p in picks[:P["TOP_N"]]:
