@@ -2,8 +2,8 @@
  "date_iso": "2026-11-20",
  "date_disp": "20-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-21T02:14:31.824001+05:30",
- "mode": "schedule",
+ "generated_at": "2026-11-21T13:16:36.463016+05:30",
+ "mode": "push",
  "breadth": {
   "total": 2760,
   "adv": 1046,
@@ -32,100 +32,9 @@
  },
  "price_band": {
   "ok": true,
-  "count": 18,
+  "count": 0,
   "first_run": false,
-  "changed": [
-   {
-    "symbol": "AKANKSHA",
-    "old": "5",
-    "new": "2"
-   },
-   {
-    "symbol": "APRAMEYA",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "APSISAERO",
-    "old": "2",
-    "new": "5"
-   },
-   {
-    "symbol": "BAFNAPH",
-    "old": "2",
-    "new": "5"
-   },
-   {
-    "symbol": "LYKALABS",
-    "old": "2",
-    "new": "5"
-   },
-   {
-    "symbol": "RUSHIL",
-    "old": "20",
-    "new": "5"
-   },
-   {
-    "symbol": "VIJIFIN",
-    "old": "2",
-    "new": "5"
-   },
-   {
-    "symbol": "ALPHAGEO",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "BHADORA",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "TPHQ",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "AARNAV",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "ABINFRA",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "AMBALALSA",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "DHABRIYA",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "HGSINDIALT",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "MAXENGS",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "MENONBE",
-    "old": "10",
-    "new": "20"
-   },
-   {
-    "symbol": "SCPL",
-    "old": "5",
-    "new": "20"
-   }
-  ]
+  "changed": []
  },
  "sector_moves": {},
  "lcuc": {
