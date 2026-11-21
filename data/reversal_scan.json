@@ -1,0 +1,39 @@
+{
+ "date_iso": "2026-11-20",
+ "date_disp": "20 Nov 2026",
+ "generated_at": "2026-11-21T13:17:30+05:30",
+ "params": {
+  "MIN_PRICE": 100.0,
+  "MIN_MCAP_CR": 1000.0,
+  "NEAR_52W_LOW_PCT": 7.0,
+  "OPEN_HIGH_TOL_PCT": 0.35,
+  "MUST_CLOSE_BELOW_OPEN": true,
+  "VOL_MULT": 2.0,
+  "MIN_TURNOVER_CR": 2.0,
+  "CLOSE_POS_MIN": 0.45,
+  "LOWER_WICK_MIN": 0.4,
+  "MAX_FALL_PCT": 4.5,
+  "MIN_RANGE_PCT": 1.2,
+  "ENTRY_BUFFER_PCT": 0.2,
+  "ATR_SL_BUFFER": 0.25,
+  "MAX_RISK_PCT": 7.0,
+  "MIN_HEADROOM_R": 1.2,
+  "ROE_MIN": 10.0,
+  "DE_MAX": 1.0,
+  "REQUIRE_POSITIVE_EPS": true,
+  "ALLOW_GRADES": [
+   "A",
+   "B"
+  ],
+  "DHAN_INTERVAL": "5",
+  "TOP_N": 12
+ },
+ "stats": {
+  "scanned": 742,
+  "tech_pass": 0,
+  "fund_pass": 0,
+  "dhan": false
+ },
+ "picks": [],
+ "all_passed": 0
+}
