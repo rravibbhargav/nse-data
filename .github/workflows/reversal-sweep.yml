@@ -1,0 +1,45 @@
+name: Reversal parameter sweep
+
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_window:
+        description: 'Days allowed to cross the signal-day high'
+        default: '5'
+      trade_window:
+        description: 'Days allowed to reach T1 before giving up'
+        default: '20'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reversal-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install libraries
+        run: pip install --quiet yfinance pandas numpy
+      - name: Run sweep
+        env:
+          TRIGGER_WINDOW: ${{ inputs.trigger_window }}
+          TRADE_WINDOW: ${{ inputs.trade_window }}
+        run: python3 scripts/reversal_sweep.py
+      - name: Save results
+        run: |
+          git config user.name "nse-bot"
+          git config user.email "nse-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Reversal sweep $(TZ=Asia/Kolkata date +%F)" || echo "nothing to commit"
+          git pull --rebase -X theirs
+          git push
