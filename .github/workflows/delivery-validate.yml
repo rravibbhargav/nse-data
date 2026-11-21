@@ -9,6 +9,9 @@ on:
       trade_window:
         description: 'Days allowed to reach T1 before giving up'
         default: '20'
+      selftest:
+        description: 'yes = only exercise the delivery cache'
+        default: 'no'
 
 permissions:
   contents: write
@@ -30,7 +33,11 @@ jobs:
           python-version: '3.11'
       - name: Install libraries
         run: pip install --quiet yfinance pandas numpy
+      - name: Delivery cache self-test
+        if: ${{ inputs.selftest == 'yes' }}
+        run: DELIV_SELFTEST=1 python3 scripts/reversal_scanner.py
       - name: Run delivery validation
+        if: ${{ inputs.selftest != 'yes' }}
         env:
           TRIGGER_WINDOW: ${{ inputs.trigger_window }}
           TRADE_WINDOW: ${{ inputs.trade_window }}

@@ -612,7 +612,25 @@ def already_done(date_iso):
 
 
 # ---------------------------------- main -----------------------------------
+def selftest():
+    """DELIV_SELFTEST=1: exercise the delivery cache without a full scan."""
+    bdate, bhav = sw.latest_bhav()
+    if not bdate:
+        sys.exit("no bhavcopy available")
+    series = delivery_history(bdate)
+    log(f"symbols with delivery history: {len(series)}")
+    for sym in ("RELIANCE", "TCS", "COALINDIA", "WIPRO", "BATAINDIA"):
+        r = delivery_check(series, sym, bdate.isoformat())
+        log(f"  {sym:<12} today {r['deliv_pct']}%  20d avg {r['deliv_avg']}%  "
+            f"ratio {r['deliv_ratio']}  ok={r['deliv_ok']}  score {r['deliv_score']}")
+    hist = series.get("RELIANCE") or []
+    log(f"  RELIANCE history days: {len(hist)} (from {hist[0][0] if hist else '-'} "
+        f"to {hist[-1][0] if hist else '-'})")
+
+
 def main():
+    if os.environ.get("DELIV_SELFTEST"):
+        return selftest()
     universe = load_universe()
     log(f"universe: {len(universe)} symbols")
     frames, _ = sw.download_prices(list(universe))
