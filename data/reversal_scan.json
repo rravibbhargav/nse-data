@@ -1,14 +1,14 @@
 {
  "date_iso": "2026-11-20",
  "date_disp": "20 Nov 2026",
- "generated_at": "2026-11-21T13:17:30+05:30",
+ "generated_at": "2026-11-21T13:26:51+05:30",
  "params": {
   "MIN_PRICE": 100.0,
   "MIN_MCAP_CR": 1000.0,
   "NEAR_52W_LOW_PCT": 7.0,
   "OPEN_HIGH_TOL_PCT": 0.35,
   "MUST_CLOSE_BELOW_OPEN": true,
-  "VOL_MULT": 2.0,
+  "VOL_MULT": 2.5,
   "MIN_TURNOVER_CR": 2.0,
   "CLOSE_POS_MIN": 0.45,
   "LOWER_WICK_MIN": 0.4,
