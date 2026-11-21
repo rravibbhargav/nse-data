@@ -65,6 +65,9 @@ P = dict(
 
     # --- absorption proof inside the candle ---
     CLOSE_POS_MIN=0.45,        # (close - low) / (high - low)
+    # NOTE: on an open=high candle the close IS the body low, so the lower-wick
+    # share equals CLOSE_POS exactly. This second threshold only bites if it is
+    # set above CLOSE_POS_MIN; it is kept so the two can be separated later.
     LOWER_WICK_MIN=0.40,       # lower wick as share of the day's range
     MAX_FALL_PCT=4.5,          # absorbed, not a freefall: close vs prev close
     MIN_RANGE_PCT=1.2,         # day must actually have a fight in it
@@ -587,8 +590,8 @@ def telegram_text(date_disp, picks, stats):
             f"<b>{i}. {p['symbol']}</b> ({(p.get('industry') or '')[:16]}) — "
             f"score {p['score']} | fund {p['fund_grade']}\n"
             f"   CMP ₹{p['close']} ({p['chg_pct']:+.1f}%) | 52W low se +{p['above_52w_low_pct']}%\n"
-            f"   Vol {p['vol_ratio']}x | wick {int(p['lower_wick'] * 100)}% | "
-            f"close {int(p['close_pos'] * 100)}% of range\n"
+            f"   Vol {p['vol_ratio']}x | close {int(p['close_pos'] * 100)}% of range "
+            f"(lower wick {int((1 - p['close_pos']) * 100)}% se upar)\n"
             f"   Delivery {_f(p.get('deliv_pct'), '%')} vs avg {_f(p.get('deliv_avg'), '%')} "
             f"= {_f(p.get('deliv_ratio'), 'x')} | VWAP: {dh}\n"
             f"   <b>Entry &gt; ₹{p['entry']}</b> | SL ₹{p['sl']} ({p['risk_pct']}%) | "
@@ -710,7 +713,6 @@ def main():
         bits = [f"52W low +{p['above_52w_low_pct']}%",
                 f"open=high ({p['open_high_gap_pct']}%)",
                 f"vol {p['vol_ratio']}x",
-                f"wick {int(p['lower_wick'] * 100)}%",
                 f"close {int(p['close_pos'] * 100)}% of range"]
         if p.get("deliv_ratio"):
             bits.append(f"delivery {p['deliv_pct']}% ({p['deliv_ratio']}x avg)")
