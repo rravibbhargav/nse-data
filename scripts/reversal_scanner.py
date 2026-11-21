@@ -57,7 +57,7 @@ P = dict(
     OPEN_HIGH_TOL_PCT=0.35,    # (high - open) / open <= X%  -> open is the high
     MUST_CLOSE_BELOW_OPEN=True,
     # --- volume says the opposite ---
-    VOL_MULT=2.0,              # today's volume vs 20-day average
+    VOL_MULT=2.5,              # today's volume vs 20-day average (2y sweep: best expectancy)
     MIN_TURNOVER_CR=2.0,       # today's traded value, Rs crore (liquidity)
     # --- absorption proof inside the candle ---
     CLOSE_POS_MIN=0.45,        # (close - low) / (high - low)
@@ -196,8 +196,10 @@ def analyse(sym, df, industry):
     headroom_r = (res - entry) / risk
     if headroom_r < P["MIN_HEADROOM_R"]:
         return None
+    # 2-year sweep: a 2R exit carried the best expectancy (+0.28R per trade),
+    # so T1 is the partial and T2 the main exit.
     t1 = round(entry + 1.5 * risk, 2)
-    t2 = round(entry + max(2.5, min(headroom_r, 4.0)) * risk, 2)
+    t2 = round(entry + 2.0 * risk, 2)
 
     # context
     rsi14 = float(sw.rsi(c).iloc[-1])
