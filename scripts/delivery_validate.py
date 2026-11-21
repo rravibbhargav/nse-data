@@ -18,6 +18,7 @@ import subprocess
 import sys
 import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 
 import numpy as np
@@ -85,8 +86,19 @@ def nse_deliv_series(symbol, frm, to):
 
 
 def bhav_deliv(d):
-    t = sw.curl_get(f"{sw.ARCHIVE}/products/content/sec_bhavdata_full_"
-                    f"{d.strftime('%d%m%Y')}.csv")
+    url = (f"{sw.ARCHIVE}/products/content/sec_bhavdata_full_"
+           f"{d.strftime('%d%m%Y')}.csv")
+    t = None
+    for _ in range(2):
+        try:
+            r = subprocess.run(["curl", "-s", "-m", "20", "-A", sw.UA,
+                                "-H", "Referer: https://www.nseindia.com/", url],
+                               capture_output=True, text=True, timeout=30)
+            if r.stdout and not r.stdout.lstrip().startswith("<"):
+                t = r.stdout
+                break
+        except Exception:
+            pass
     if not t:
         return None
     rows = [{(k or "").strip(): (v.strip() if isinstance(v, str) else v)
@@ -156,14 +168,25 @@ def main():
         need = sorted(need)[-250:]
         log(f"{len(missing)} signals need the bhavcopy fallback: {len(need)} days")
         tmp = defaultdict(list)
-        for d in need:
+        wanted_syms = {m["symbol"] for m in missing}
+        done = [0]
+
+        def grab(d):
             got = bhav_deliv(d)
-            if not got:
-                continue
-            for s in missing:
-                pct = got.get(s["symbol"])
-                if pct is not None:
-                    tmp[s["symbol"]].append((d.isoformat(), pct))
+            if got:
+                done[0] += 1
+                if done[0] % 25 == 0:
+                    log(f"  bhavcopy {done[0]}/{len(need)} fetched")
+            return d, got
+
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            for d, got in ex.map(grab, need):
+                if not got:
+                    continue
+                for sym in wanted_syms:
+                    pct = got.get(sym)
+                    if pct is not None:
+                        tmp[sym].append((d.isoformat(), pct))
         for sym, vals in tmp.items():
             series[sym] = sorted(set(vals))
         log(f"fallback filled {len(tmp)} symbols")
