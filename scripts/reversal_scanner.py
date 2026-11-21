@@ -590,7 +590,12 @@ def main():
         log(f"  {p['symbol']:<12} score {p['score']:>5}  entry {p['entry']:>9}  "
             f"SL {p['sl']:>9}  {p['reasons']}")
     save(picks, stats, date_iso, date_disp)
-    sw.send_telegram(telegram_text(date_disp, picks, stats))
+    # this setup fires only a couple of times a month, so stay quiet on empty
+    # days instead of sending a "nothing today" message every evening
+    if picks or os.environ.get("ALWAYS_SEND", "false").lower() == "true":
+        sw.send_telegram(telegram_text(date_disp, picks, stats))
+    else:
+        log("no picks -> no Telegram message (set ALWAYS_SEND=true to send anyway)")
 
 
 if __name__ == "__main__":
