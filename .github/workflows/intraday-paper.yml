@@ -1,0 +1,63 @@
+name: SKT intraday breadth paper
+on:
+  schedule:
+    - cron: '25 3 * * 1-5'   # 08:55 IST
+    - cron: '35 3 * * 1-5'   # 09:05 IST (backup if the first run is delayed)
+  workflow_dispatch:
+    inputs:
+      replay_date:
+        description: 'Replay a past day (YYYY-MM-DD), blank = live paper'
+        default: ''
+      replay_symbols:
+        description: 'Replay symbols, comma separated'
+        default: ''
+      replay_side:
+        description: 'LONG or SHORT (replay only)'
+        default: 'SHORT'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: intraday-paper
+  cancel-in-progress: false
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Skip if started too late
+        run: |
+          H=$(TZ=Asia/Kolkata date +%H%M)
+          if [ -z "${{ inputs.replay_date }}" ] && [ "$H" -gt "0935" ]; then
+            echo "Started at $H IST, 9:25 window missed - skipping."
+            exit 1
+          fi
+      - name: Run paper engine
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DHAN_ACCESS_TOKEN: ${{ secrets.DHAN_ACCESS_TOKEN }}
+          RISK_RUPEES: '2500'
+          MAX_TRADES: '3'
+          CAPITAL: ${{ vars.INTRADAY_CAPITAL || '100000' }}
+          REPLAY_DATE: ${{ inputs.replay_date }}
+          REPLAY_SYMBOLS: ${{ inputs.replay_symbols }}
+          REPLAY_SIDE: ${{ inputs.replay_side }}
+        run: python3 scripts/intraday_breadth_paper.py
+      - name: Save paper log
+        if: always()
+        run: |
+          git config user.name "nse-bot"
+          git config user.email "nse-bot@users.noreply.github.com"
+          git add data || true
+          git commit -m "Paper trades $(TZ=Asia/Kolkata date +%F)" || echo "nothing to commit"
+          git pull --rebase -X theirs || true
+          git push || true
