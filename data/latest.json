@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-20",
- "date_disp": "20-11-2026",
+ "date_iso": "2026-11-23",
+ "date_disp": "23-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-23T16:12:15.239473+05:30",
- "mode": "push",
+ "generated_at": "2026-11-24T05:53:40.498259+05:30",
+ "mode": "schedule",
  "breadth": {
-  "total": 2760,
-  "adv": 1046,
-  "dec": 1682,
-  "unch": 32,
-  "avg_move": -0.51,
-  "pct_red": 60.9,
-  "ad_ratio": 0.62,
-  "turnover_lakh_cr": 1.35
+  "total": 2773,
+  "adv": 748,
+  "dec": 1997,
+  "unch": 28,
+  "avg_move": -0.81,
+  "pct_red": 72.0,
+  "ad_ratio": 0.37,
+  "turnover_lakh_cr": 1.26
  },
  "week52": {
   "highs_count": 0,
@@ -32,90 +32,49 @@
  },
  "price_band": {
   "ok": true,
-  "count": 0,
+  "count": 7,
   "first_run": false,
-  "changed": []
+  "changed": [
+   {
+    "symbol": "BALAXI",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "HMAAGRO",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "IEML-RE1",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "VPFL",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "KICL",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "ACUTAAS",
+    "old": "20",
+    "new": "No Band"
+   },
+   {
+    "symbol": "APARINDS",
+    "old": "20",
+    "new": "No Band"
+   }
+  ]
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "11 Nov\u201319 Nov",
-  "matches": [
-   {
-    "date": "2026-11-20",
-    "cat": "b",
-    "symbol": "RUNWALENTR",
-    "band": 5.0,
-    "prev_close": 241.52,
-    "open": 241.2,
-    "high": 253.59,
-    "low": 241.2,
-    "close": 253.59,
-    "uc": 253.55,
-    "dist_pct": -0.02,
-    "deliv_pct": 66.14,
-    "qty": 184678,
-    "turnover_lacs": 462.3,
-    "lc_days": "16 Nov",
-    "lc_count": 1,
-    "window": "11 Nov\u201319 Nov"
-   },
-   {
-    "date": "2026-11-20",
-    "cat": "b",
-    "symbol": "XTRANET",
-    "band": 5.0,
-    "prev_close": 255.3,
-    "open": 262.0,
-    "high": 268.05,
-    "low": 253.55,
-    "close": 262.05,
-    "uc": 268.05,
-    "dist_pct": 2.24,
-    "deliv_pct": 43.24,
-    "qty": 472374,
-    "turnover_lacs": 1231.99,
-    "lc_days": "16 Nov",
-    "lc_count": 1,
-    "window": "11 Nov\u201319 Nov"
-   },
-   {
-    "date": "2026-11-20",
-    "cat": "b",
-    "symbol": "ONIXSOLAR",
-    "band": 5.0,
-    "prev_close": 249.0,
-    "open": 252.0,
-    "high": 261.45,
-    "low": 249.75,
-    "close": 250.2,
-    "uc": 261.45,
-    "dist_pct": 4.3,
-    "deliv_pct": 63.95,
-    "qty": 165521,
-    "turnover_lacs": 420.38,
-    "lc_days": "11 Nov, 12 Nov, 16 Nov (lock)",
-    "lc_count": 3,
-    "window": "11 Nov\u201319 Nov"
-   },
-   {
-    "date": "2026-11-20",
-    "cat": "c",
-    "symbol": "AAREYDRUGS",
-    "band": 5.0,
-    "prev_close": 112.2,
-    "open": 114.78,
-    "high": 116.9,
-    "low": 113.11,
-    "close": 116.03,
-    "uc": 117.81,
-    "dist_pct": 1.51,
-    "deliv_pct": 60.72,
-    "qty": 258342,
-    "turnover_lacs": 298.54,
-    "lc_days": "16 Nov, 17 Nov",
-    "lc_count": 2,
-    "window": "11 Nov\u201319 Nov"
-   }
-  ]
+  "window": "12 Nov\u201320 Nov",
+  "matches": []
  }
 }
