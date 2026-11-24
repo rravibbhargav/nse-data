@@ -143,6 +143,21 @@ class Series:
                             green=hc > ho))
         return out
 
+    def is_live(self, lookback=5):
+        """False when the feed is frozen (holiday, or a stalled data source).
+
+        On a non-trading day the option chain keeps returning the same stale
+        last_price, which would build zero-range candles: std dev collapses to 0,
+        every candle sits on the lower band, and the engine would invent signals
+        out of a dead feed. So require real movement before trusting a signal.
+        """
+        tail = self.bars[-lookback:]
+        if len(tail) < lookback:
+            return False
+        if any(b["h"] != b["l"] for b in tail):
+            return True
+        return len({b["c"] for b in tail}) > 1
+
     def lower_band(self, ha, i):
         if i + 1 < BB_N:
             return None
@@ -343,6 +358,7 @@ def main():
            "\n<i>Strike pre-open price se hi fix rakha gaya hai.</i>")
 
     log("engine running")
+    feed_checked = False
     last_px = {}
     while now().hour * 60 + now().minute < CLOSE_T[0] * 60 + CLOSE_T[1]:
         for sym, st in state.items():
@@ -364,6 +380,16 @@ def main():
                 completed = ser.sample(float(px), ts)
                 if completed:
                     handle_bar(st, sym, opt, ser)
+        # dead-feed guard: by 09:35 a live session must have shown movement
+        if not feed_checked and now().hour * 60 + now().minute >= 9 * 60 + 35:
+            feed_checked = True
+            if not any(s.is_live() for st in state.values()
+                       for s in st.get("series", {}).values()):
+                tg("⏸️ HA-BB paper: feed frozen till 09:35 — looks like a "
+                   "non-trading day (holiday). Koi trade nahi liya, engine band.")
+                log("feed frozen, exiting")
+                return
+
         # end-of-day guard
         if st_all_stopped(state):
             log("all symbols stopped for the day")
@@ -411,7 +437,7 @@ def handle_bar(st, sym, opt, ser):
                        f"No new trade today (as per rules).")
         return
 
-    if st["stopped"]:
+    if st["stopped"] or not ser.is_live():
         return
 
     lower = ser.lower_band(ha, i)
