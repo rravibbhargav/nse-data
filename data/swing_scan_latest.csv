@@ -1,7 +1,3 @@
 date,symbol,industry,score,close,chg_pct,entry,sl,risk_pct,t1,t2,vol_ratio,rsi,adx,ret_1m,rs_excess,tight_range_pct,pct_from_52w,turnover_cr,breakout_20d,reasons
-2026-11-20,SHREECEM,Construction Materials,61.5,25475.0,1.43,25475.0,24360.85,4.37,27146.22,28260.38,3.33,69.5,31.5,14.2,3.9,4.1,-9.3,63.9,True,"20D breakout, tight base 4.1%, vol 3.3x, RS +3.9%"
-2026-11-20,APOLLOHOSP,Healthcare,57.4,9200.0,5.29,9200.0,8310.0,9.67,10535.0,11425.0,2.45,70.5,30.4,21.1,10.7,7.8,-0.9,489.4,True,"20D breakout, near 52W high, tight base 7.8%, vol 2.5x, RS +10.7%"
-2026-11-20,DLF,Realty,50.4,785.0,2.21,785.0,732.05,6.75,864.42,917.38,1.53,73.7,36.9,18.2,7.9,6.7,-0.9,219.5,True,"20D breakout, near 52W high, tight base 6.7%, vol 1.5x, RS +7.9%"
-2026-11-20,PHOENIXLTD,Realty,49.1,2285.3,2.14,2285.3,2080.0,8.98,2593.25,2798.55,1.77,70.7,39.4,21.9,11.6,11.0,-0.8,104.2,False,"near 52W high, vol 1.8x, RS +11.6%"
-2026-11-20,KIMS,Healthcare,48.7,795.6,3.62,795.6,717.05,9.87,913.42,991.97,2.32,72.5,28.9,18.0,7.7,8.4,-7.3,33.0,True,"20D breakout, vol 2.3x, RS +7.7%"
-2026-11-20,MEESHO,Consumer Services,40.4,259.92,0.41,259.92,228.75,11.99,306.68,337.85,2.05,70.4,29.2,19.7,9.4,15.2,-1.3,361.7,False,"near 52W high, vol 2.0x, RS +9.4%"
+2026-11-23,ICICIGI,Financial Services,41.4,1742.6,0.38,1742.6,1634.2,6.22,1905.2,2013.6,1.73,65.2,27.5,6.7,1.0,9.1,-14.1,88.5,True,"20D breakout, vol 1.7x, RS +1.0%"
+2026-11-23,LALPATHLAB,Healthcare,41.2,2040.5,1.72,2040.5,1940.0,4.93,2191.25,2291.75,1.79,62.1,26.2,10.7,5.0,7.4,-1.9,63.1,False,"near 52W high, tight base 7.4%, vol 1.8x, RS +5.0%"
