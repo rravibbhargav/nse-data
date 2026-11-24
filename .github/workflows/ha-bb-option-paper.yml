@@ -1,0 +1,52 @@
+name: SKT HA-BB option paper
+
+on:
+  schedule:
+    - cron: '30 3 * * 1-5'   # 09:00 IST (pre-open window starts)
+    - cron: '36 3 * * 1-5'   # 09:06 IST (backup if the first run is delayed)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ha-bb-option-paper
+  cancel-in-progress: false
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Skip if started too late
+        run: |
+          H=$(TZ=Asia/Kolkata date +%H%M)
+          if [ "$H" -gt "1400" ]; then
+            echo "Started at $H IST - too late, skipping."
+            exit 1
+          fi
+
+      - name: Run HA-BB paper engine
+        env:
+          DHAN_ACCESS_TOKEN: ${{ secrets.DHAN_ACCESS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 scripts/ha_bb_option_paper.py
+
+      - name: Save paper log
+        if: always()
+        run: |
+          git config user.name "nse-bot"
+          git config user.email "nse-bot@users.noreply.github.com"
+          git add data || true
+          git commit -m "HA-BB paper trades $(TZ=Asia/Kolkata date +%F)" || echo "nothing to commit"
+          git pull --rebase -X theirs || true
+          git push || true
