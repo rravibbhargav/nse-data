@@ -2,8 +2,8 @@
  "date_iso": "2026-11-23",
  "date_disp": "23-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-24T05:53:40.498259+05:30",
- "mode": "schedule",
+ "generated_at": "2026-11-24T10:42:16.999721+05:30",
+ "mode": "push",
  "breadth": {
   "total": 2773,
   "adv": 748,
@@ -32,45 +32,9 @@
  },
  "price_band": {
   "ok": true,
-  "count": 7,
+  "count": 0,
   "first_run": false,
-  "changed": [
-   {
-    "symbol": "BALAXI",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "HMAAGRO",
-    "old": "20",
-    "new": "10"
-   },
-   {
-    "symbol": "IEML-RE1",
-    "old": "20",
-    "new": "10"
-   },
-   {
-    "symbol": "VPFL",
-    "old": "5",
-    "new": "10"
-   },
-   {
-    "symbol": "KICL",
-    "old": "5",
-    "new": "20"
-   },
-   {
-    "symbol": "ACUTAAS",
-    "old": "20",
-    "new": "No Band"
-   },
-   {
-    "symbol": "APARINDS",
-    "old": "20",
-    "new": "No Band"
-   }
-  ]
+  "changed": []
  },
  "sector_moves": {},
  "lcuc": {
