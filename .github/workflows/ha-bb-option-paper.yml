@@ -27,14 +27,18 @@ jobs:
           python-version: '3.11'
 
       - name: Skip if started too late
+        id: window
         run: |
           H=$(TZ=Asia/Kolkata date +%H%M)
           if [ "$H" -gt "1400" ]; then
-            echo "Started at $H IST - too late, skipping."
-            exit 1
+            echo "Started at $H IST - too late, skipping (clean exit)."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run HA-BB paper engine
+        if: steps.window.outputs.skip != 'true'
         env:
           DHAN_ACCESS_TOKEN: ${{ secrets.DHAN_ACCESS_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -42,7 +46,7 @@ jobs:
         run: python3 scripts/ha_bb_option_paper.py
 
       - name: Save paper log
-        if: always()
+        if: always() && steps.window.outputs.skip != 'true'
         run: |
           git config user.name "nse-bot"
           git config user.email "nse-bot@users.noreply.github.com"
