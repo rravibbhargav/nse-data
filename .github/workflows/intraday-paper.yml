@@ -34,13 +34,17 @@ jobs:
         with:
           python-version: '3.11'
       - name: Skip if started too late
+        id: window
         run: |
           H=$(TZ=Asia/Kolkata date +%H%M)
           if [ -z "${{ inputs.replay_date }}" ] && [ "$H" -gt "0935" ]; then
-            echo "Started at $H IST, 9:25 window missed - skipping."
-            exit 1
+            echo "Started at $H IST, 9:25 window missed - skipping (clean exit)."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Run paper engine
+        if: steps.window.outputs.skip != 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -53,7 +57,7 @@ jobs:
           REPLAY_SIDE: ${{ inputs.replay_side }}
         run: python3 scripts/intraday_breadth_paper.py
       - name: Save paper log
-        if: always()
+        if: always() && steps.window.outputs.skip != 'true'
         run: |
           git config user.name "nse-bot"
           git config user.email "nse-bot@users.noreply.github.com"
