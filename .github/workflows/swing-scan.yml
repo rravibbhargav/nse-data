@@ -58,5 +58,10 @@ jobs:
           git config user.email "nse-bot@users.noreply.github.com"
           git add data
           git commit -m "Swing + reversal scan $(TZ=Asia/Kolkata date +%F)" || echo "nothing to commit"
-          git pull --rebase -X theirs
-          git push
+          for i in 1 2 3; do
+            git pull --rebase -X theirs && git push && echo "pushed on attempt $i" && exit 0
+            git rebase --abort 2>/dev/null || true
+            echo "push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done
+          echo "::warning::Could not push scan results after 3 attempts; alert was already sent."
