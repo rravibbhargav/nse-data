@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: '25 3 * * 1-5'   # 08:55 IST
     - cron: '35 3 * * 1-5'   # 09:05 IST (backup if the first run is delayed)
+  push:
+    paths:
+      - '.github/kick-intraday'      # Claude ka daily kick: cron late ho to bhi turant chale
   workflow_dispatch:
     inputs:
       replay_date:
@@ -37,7 +40,7 @@ jobs:
         id: window
         run: |
           H=$(TZ=Asia/Kolkata date +%H%M)
-          if [ -z "${{ inputs.replay_date }}" ] && [ "$H" -gt "0935" ]; then
+          if [ -z "${{ inputs.replay_date }}" ] && [ "$H" -gt "0940" ]; then
             echo "Started at $H IST, 9:25 window missed - skipping (clean exit)."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
