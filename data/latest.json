@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-23",
- "date_disp": "23-11-2026",
+ "date_iso": "2026-11-25",
+ "date_disp": "25-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-25T10:10:30.320269+05:30",
- "mode": "push",
+ "generated_at": "2026-11-26T03:29:22.347395+05:30",
+ "mode": "schedule",
  "breadth": {
-  "total": 2773,
-  "adv": 748,
-  "dec": 1997,
-  "unch": 28,
-  "avg_move": -0.81,
-  "pct_red": 72.0,
-  "ad_ratio": 0.37,
-  "turnover_lakh_cr": 1.26
+  "total": 2774,
+  "adv": 1183,
+  "dec": 1560,
+  "unch": 31,
+  "avg_move": -0.31,
+  "pct_red": 56.2,
+  "ad_ratio": 0.76,
+  "turnover_lakh_cr": 1.35
  },
  "week52": {
   "highs_count": 0,
@@ -32,13 +32,73 @@
  },
  "price_band": {
   "ok": true,
-  "count": 0,
+  "count": 4,
   "first_run": false,
-  "changed": []
+  "changed": [
+   {
+    "symbol": "DCI",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "MYMUDRA",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "BRACEPORT",
+    "old": "20",
+    "new": "10"
+   },
+   {
+    "symbol": "THOMASCOOK",
+    "old": "20",
+    "new": "10"
+   }
+  ]
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "12 Nov\u201320 Nov",
-  "matches": []
+  "window": "13 Nov\u201323 Nov",
+  "matches": [
+   {
+    "date": "2026-11-25",
+    "cat": "a",
+    "symbol": "ONIXSOLAR",
+    "band": 5.0,
+    "prev_close": 252.8,
+    "open": 258.95,
+    "high": 265.4,
+    "low": 243.0,
+    "close": 265.4,
+    "uc": 265.4,
+    "dist_pct": 0.0,
+    "deliv_pct": 75.13,
+    "qty": 342851,
+    "turnover_lacs": 882.0,
+    "lc_days": "16 Nov (lock)",
+    "lc_count": 1,
+    "window": "13 Nov\u201323 Nov"
+   },
+   {
+    "date": "2026-11-25",
+    "cat": "c",
+    "symbol": "RUNWALENTR",
+    "band": 5.0,
+    "prev_close": 260.22,
+    "open": 259.99,
+    "high": 270.8,
+    "low": 253.83,
+    "close": 268.2,
+    "uc": 273.2,
+    "dist_pct": 1.83,
+    "deliv_pct": 57.4,
+    "qty": 164291,
+    "turnover_lacs": 435.16,
+    "lc_days": "16 Nov",
+    "lc_count": 1,
+    "window": "13 Nov\u201323 Nov"
+   }
+  ]
  }
 }
