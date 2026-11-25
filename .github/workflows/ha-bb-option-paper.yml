@@ -2,8 +2,15 @@ name: SKT HA-BB option paper
 
 on:
   schedule:
-    - cron: '30 3 * * 1-5'   # 09:00 IST (pre-open window starts)
-    - cron: '36 3 * * 1-5'   # 09:06 IST (backup if the first run is delayed)
+    # GitHub's scheduler is best-effort and has skipped these slots entirely,
+    # so fire several attempts well before the 09:07 pre-open spot capture.
+    # The concurrency group keeps at most one extra run queued, and that one
+    # exits on the "started too late" guard below, so duplicates cost nothing.
+    - cron: '10 3 * * 1-5'   # 08:40 IST
+    - cron: '17 3 * * 1-5'   # 08:47 IST
+    - cron: '24 3 * * 1-5'   # 08:54 IST
+    - cron: '30 3 * * 1-5'   # 09:00 IST
+    - cron: '40 3 * * 1-5'   # 09:10 IST (late, but still a trading session)
   workflow_dispatch:
 
 permissions:
