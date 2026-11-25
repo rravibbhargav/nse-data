@@ -358,7 +358,8 @@ def main():
            "\n<i>Strike pre-open price se hi fix rakha gaya hai.</i>")
 
     log("engine running")
-    feed_checked = False
+    engine_start = now()
+    feed_ok = False
     last_px = {}
     while now().hour * 60 + now().minute < CLOSE_T[0] * 60 + CLOSE_T[1]:
         for sym, st in state.items():
@@ -380,14 +381,27 @@ def main():
                 completed = ser.sample(float(px), ts)
                 if completed:
                     handle_bar(st, sym, opt, ser)
-        # dead-feed guard: by 09:35 a live session must have shown movement
-        if not feed_checked and now().hour * 60 + now().minute >= 9 * 60 + 35:
-            feed_checked = True
-            if not any(s.is_live() for st in state.values()
-                       for s in st.get("series", {}).values()):
-                tg("⏸️ HA-BB paper: feed frozen till 09:35 — looks like a "
-                   "non-trading day (holiday). Koi trade nahi liya, engine band.")
-                log("feed frozen, exiting")
+        # dead-feed guard. Judged on how long THIS engine has been polling, not on
+        # the wall clock: a late start (manual run) has no bars yet, and an earlier
+        # version read that emptiness as a frozen feed and quit within a minute.
+        if not feed_ok:
+            mins = (now() - engine_start).total_seconds() / 60.0
+            series = [s for st in state.values() for s in st.get("series", {}).values()]
+            ready = [s for s in series if len(s.bars) >= 6]
+            if mins >= 12 and ready:
+                if any(s.is_live() for s in ready):
+                    feed_ok = True
+                    log("feed verified live")
+                else:
+                    tg("⏸️ HA-BB paper: premium feed bilkul nahi hil raha "
+                       f"({int(mins)} min dekha) — lagta hai non-trading day hai. "
+                       "Koi trade nahi liya, engine band.")
+                    log("feed frozen, exiting")
+                    return
+            elif mins >= 30 and not ready:
+                tg("⚠️ HA-BB paper: 30 min me Dhan se candles nahi bani. "
+                   "Engine band — data feed check karni padegi.")
+                log("no candles after 30 min, exiting")
                 return
 
         # end-of-day guard

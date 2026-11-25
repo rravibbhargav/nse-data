@@ -1,7 +1,44 @@
 {
- "date_iso": "2026-11-24",
- "date_disp": "24-11-2026",
- "trading_day": false,
- "generated_at": "2026-11-25T04:17:26.841335+05:30",
- "mode": "schedule"
+ "date_iso": "2026-11-23",
+ "date_disp": "23-11-2026",
+ "trading_day": true,
+ "generated_at": "2026-11-25T10:07:47.551958+05:30",
+ "mode": "push",
+ "breadth": {
+  "total": 2773,
+  "adv": 748,
+  "dec": 1997,
+  "unch": 28,
+  "avg_move": -0.81,
+  "pct_red": 72.0,
+  "ad_ratio": 0.37,
+  "turnover_lakh_cr": 1.26
+ },
+ "week52": {
+  "highs_count": 0,
+  "lows_count": 0,
+  "top_highs": [],
+  "top_lows": []
+ },
+ "bulk_deals": {
+  "ok": false,
+  "count": 0,
+  "items": []
+ },
+ "block_deals": {
+  "ok": false,
+  "count": 0,
+  "items": []
+ },
+ "price_band": {
+  "ok": true,
+  "count": 0,
+  "first_run": false,
+  "changed": []
+ },
+ "sector_moves": {},
+ "lcuc": {
+  "window": "12 Nov\u201320 Nov",
+  "matches": []
+ }
 }
