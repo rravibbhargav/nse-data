@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-25",
- "date_disp": "25-11-2026",
+ "date_iso": "2026-11-26",
+ "date_disp": "26-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-26T09:34:54.622694+05:30",
- "mode": "push",
+ "generated_at": "2026-11-27T03:27:00.869656+05:30",
+ "mode": "schedule",
  "breadth": {
-  "total": 2774,
-  "adv": 1183,
-  "dec": 1560,
-  "unch": 31,
-  "avg_move": -0.31,
-  "pct_red": 56.2,
-  "ad_ratio": 0.76,
-  "turnover_lakh_cr": 1.35
+  "total": 2782,
+  "adv": 1497,
+  "dec": 1244,
+  "unch": 41,
+  "avg_move": 0.32,
+  "pct_red": 44.7,
+  "ad_ratio": 1.2,
+  "turnover_lakh_cr": 1.21
  },
  "week52": {
   "highs_count": 0,
@@ -32,51 +32,120 @@
  },
  "price_band": {
   "ok": true,
-  "count": 0,
+  "count": 6,
   "first_run": false,
-  "changed": []
+  "changed": [
+   {
+    "symbol": "DEEDEV",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "ORTINGLOBE",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "UTLSOLAR",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "VALUE360",
+    "old": "10",
+    "new": "5"
+   },
+   {
+    "symbol": "IEX",
+    "old": "No Band",
+    "new": "20"
+   },
+   {
+    "symbol": "IREDA",
+    "old": "No Band",
+    "new": "20"
+   }
+  ]
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "13 Nov\u201323 Nov",
+  "window": "16 Nov\u201325 Nov",
   "matches": [
    {
-    "date": "2026-11-25",
+    "date": "2026-11-26",
+    "cat": "a",
+    "symbol": "E2E",
+    "band": 5.0,
+    "prev_close": 453.25,
+    "open": 455.0,
+    "high": 475.9,
+    "low": 455.0,
+    "close": 475.9,
+    "uc": 475.9,
+    "dist_pct": 0.0,
+    "deliv_pct": 65.16,
+    "qty": 584073,
+    "turnover_lacs": 2747.08,
+    "lc_days": "16 Nov (lock), 17 Nov, 19 Nov, 20 Nov, 23 Nov (lock)",
+    "lc_count": 5,
+    "window": "16 Nov\u201325 Nov"
+   },
+   {
+    "date": "2026-11-26",
+    "cat": "a",
+    "symbol": "ESDS",
+    "band": 5.0,
+    "prev_close": 1054.5,
+    "open": 1060.0,
+    "high": 1107.2,
+    "low": 1045.0,
+    "close": 1107.2,
+    "uc": 1107.2,
+    "dist_pct": 0.0,
+    "deliv_pct": 39.19,
+    "qty": 369029,
+    "turnover_lacs": 4027.42,
+    "lc_days": "16 Nov (lock), 19 Nov, 23 Nov (lock)",
+    "lc_count": 3,
+    "window": "16 Nov\u201325 Nov"
+   },
+   {
+    "date": "2026-11-26",
     "cat": "a",
     "symbol": "ONIXSOLAR",
     "band": 5.0,
-    "prev_close": 252.8,
-    "open": 258.95,
-    "high": 265.4,
-    "low": 243.0,
-    "close": 265.4,
-    "uc": 265.4,
+    "prev_close": 265.4,
+    "open": 271.3,
+    "high": 278.65,
+    "low": 265.95,
+    "close": 278.65,
+    "uc": 278.65,
     "dist_pct": 0.0,
-    "deliv_pct": 75.13,
-    "qty": 342851,
-    "turnover_lacs": 882.0,
+    "deliv_pct": 53.53,
+    "qty": 110068,
+    "turnover_lacs": 299.62,
     "lc_days": "16 Nov (lock)",
     "lc_count": 1,
-    "window": "13 Nov\u201323 Nov"
+    "window": "16 Nov\u201325 Nov"
    },
    {
-    "date": "2026-11-25",
-    "cat": "c",
-    "symbol": "RUNWALENTR",
+    "date": "2026-11-26",
+    "cat": "b",
+    "symbol": "TIL",
     "band": 5.0,
-    "prev_close": 260.22,
-    "open": 259.99,
-    "high": 270.8,
-    "low": 253.83,
-    "close": 268.2,
-    "uc": 273.2,
-    "dist_pct": 1.83,
-    "deliv_pct": 57.4,
-    "qty": 164291,
-    "turnover_lacs": 435.16,
-    "lc_days": "16 Nov",
+    "prev_close": 192.76,
+    "open": 192.5,
+    "high": 202.39,
+    "low": 189.9,
+    "close": 202.36,
+    "uc": 202.39,
+    "dist_pct": 0.01,
+    "deliv_pct": 66.29,
+    "qty": 101780,
+    "turnover_lacs": 200.69,
+    "lc_days": "25 Nov",
     "lc_count": 1,
-    "window": "13 Nov\u201323 Nov"
+    "window": "16 Nov\u201325 Nov"
    }
   ]
  }
