@@ -2,8 +2,8 @@
  "date_iso": "2026-11-25",
  "date_disp": "25-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-26T03:29:22.347395+05:30",
- "mode": "schedule",
+ "generated_at": "2026-11-26T09:32:15.824027+05:30",
+ "mode": "push",
  "breadth": {
   "total": 2774,
   "adv": 1183,
@@ -32,30 +32,9 @@
  },
  "price_band": {
   "ok": true,
-  "count": 4,
+  "count": 0,
   "first_run": false,
-  "changed": [
-   {
-    "symbol": "DCI",
-    "old": "20",
-    "new": "5"
-   },
-   {
-    "symbol": "MYMUDRA",
-    "old": "10",
-    "new": "5"
-   },
-   {
-    "symbol": "BRACEPORT",
-    "old": "20",
-    "new": "10"
-   },
-   {
-    "symbol": "THOMASCOOK",
-    "old": "20",
-    "new": "10"
-   }
-  ]
+  "changed": []
  },
  "sector_moves": {},
  "lcuc": {

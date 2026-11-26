@@ -17,6 +17,9 @@ on:
       replay_side:
         description: 'LONG or SHORT (replay only)'
         default: 'SHORT'
+      force:
+        description: 'true = 09:40 window guard bypass karo (same-day test)'
+        default: 'false'
 
 permissions:
   contents: write
@@ -32,7 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          # dispatch pe jis branch se chalaya wahi test karo; warna main
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref_name || 'main' }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -40,7 +44,8 @@ jobs:
         id: window
         run: |
           H=$(TZ=Asia/Kolkata date +%H%M)
-          if [ -z "${{ inputs.replay_date }}" ] && [ "$H" -gt "0940" ]; then
+          if [ -z "${{ inputs.replay_date }}" ] && [ "${{ inputs.force }}" != 'true' ] \
+               && [ "$H" -gt "0940" ]; then
             echo "Started at $H IST, 9:25 window missed - skipping (clean exit)."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
@@ -52,6 +57,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DHAN_ACCESS_TOKEN: ${{ secrets.DHAN_ACCESS_TOKEN }}
+          DHAN_CLIENT_ID: ${{ secrets.DHAN_CLIENT_ID }}
           RISK_RUPEES: '2500'
           MAX_TRADES: '3'
           CAPITAL: ${{ vars.INTRADAY_CAPITAL || '100000' }}
