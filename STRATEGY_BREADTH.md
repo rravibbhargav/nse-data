@@ -9,7 +9,8 @@ Nothing here is a recommendation. Research + personal-trading system only.
 - Barabar / difference < 2%  -> NO TRADE, din band.
 
 ## 2. Sector (9:25 IST)
-- Saare NSE sectoral indices ka % change.
+- Saare NSE sectoral indices ka % change (equal-weighted: index ke
+  constituents ke % change ka average).
 - LONG day  -> sabse top performer sector
 - SHORT day -> sabse jyada gira hua sector
 
@@ -67,3 +68,18 @@ Us sector ke constituents me se:
   (jo kam ho) + STT 0.025% sell side + exchange 0.00297% + GST 18% + stamp 0.003% buy.
 - 20-30 trading din ke baad stats dekhenge: win%, avg R, max DD. Tab decide
   karenge ki real paisa lagana hai ya rule tweak karna hai.
+
+## Data source (Nov 2026)
+`www.nseindia.com/api/*` GitHub Actions runners (Azure/US IP) se block hai,
+isliye engine wahan se kuch nahi leta:
+
+| Cheez | Source |
+|---|---|
+| Index constituents (NIFTY 500 + 14 sector) | `nsearchives.nseindia.com/content/indices/*.csv` |
+| F&O underlyings | `nsearchives.nseindia.com/content/fo/fo_mktlots.csv`, fallback `data/fno_symbols.txt` |
+| Live LTP / prev close / % change | Dhan `POST /v2/marketfeed/quote` |
+| 5-min OHLCV | Dhan `POST /v2/charts/intraday` |
+
+Dhan marketfeed quote ke liye `DHAN_ACCESS_TOKEN` **aur** `DHAN_CLIENT_ID`
+dono secrets chahiye. Client id na ho to run skip hota hai aur Telegram pe
+wajah aa jaati hai.
