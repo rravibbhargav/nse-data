@@ -1,11 +1,1 @@
 date,symbol,industry,score,close,chg_pct,entry,sl,risk_pct,t1,t2,vol_ratio,rsi,adx,ret_1m,rs_excess,tight_range_pct,pct_from_52w,turnover_cr,breakout_20d,reasons
-2026-11-25,BAJAJFINSV,Financial Services,77.7,1925.0,2.39,1925.0,1831.84,4.84,2064.74,2157.9,3.82,67.4,45.2,16.3,7.4,5.2,-9.1,238.9,True,"20D breakout, tight base 5.2%, vol 3.8x, RS +7.4%"
-2026-11-25,INDIGO,Services,62.7,5720.0,3.57,5720.0,5364.99,6.21,6252.52,6607.52,1.62,69.0,30.6,25.7,16.9,5.9,-4.0,527.8,True,"20D breakout, tight base 5.9%, vol 1.6x, RS +16.9%"
-2026-11-25,DRREDDY,Healthcare,58.1,1398.0,1.3,1398.0,1360.5,2.68,1454.25,1491.75,1.54,68.4,47.2,13.7,4.8,2.7,-1.2,220.7,False,"near 52W high, tight base 2.7%, vol 1.5x, RS +4.8%"
-2026-11-25,HINDUNILVR,Fast Moving Consumer Goods,58.0,2141.8,6.08,2141.8,1961.0,8.44,2413.0,2593.8,2.7,70.1,26.6,18.0,9.2,5.9,-13.9,374.6,True,"20D breakout, tight base 5.9%, vol 2.7x, RS +9.2%"
-2026-11-25,NH,Healthcare,57.7,2003.7,1.49,2003.7,1833.0,8.52,2259.75,2430.45,2.25,69.5,29.2,21.7,12.8,8.7,-4.3,42.7,True,"20D breakout, vol 2.2x, RS +12.8%"
-2026-11-25,TRENT,Consumer Services,57.7,3319.6,3.48,3319.6,3123.38,5.91,3613.93,3810.15,1.75,70.1,34.5,21.7,12.8,8.4,-23.7,328.4,True,"20D breakout, vol 1.7x, RS +12.8%"
-2026-11-25,APOLLOTYRE,Automobile and Auto Components,53.7,437.35,3.96,437.35,412.3,5.73,474.93,499.98,1.86,66.4,31.1,13.8,5.0,5.9,-18.9,40.3,True,"20D breakout, tight base 5.9%, vol 1.9x, RS +5.0%"
-2026-11-25,IDFCFIRSTB,Financial Services,47.7,87.47,2.42,87.47,78.4,10.37,101.07,110.14,1.59,67.3,34.9,21.0,12.1,15.1,-2.4,198.6,False,"near 52W high, vol 1.6x, RS +12.1%"
-2026-11-25,EMAMILTD,Fast Moving Consumer Goods,40.1,427.55,2.6,427.55,400.05,6.43,468.8,496.3,1.63,69.4,27.5,14.6,5.7,10.6,-22.4,30.7,True,"20D breakout, vol 1.6x, RS +5.7%"
-2026-11-25,LGEINDIA,Consumer Durables,39.8,1818.4,2.3,1818.4,1672.0,8.05,2038.0,2184.4,2.15,63.0,22.8,12.9,4.0,8.2,-1.0,132.3,False,"near 52W high, vol 2.1x, RS +4.0%"
