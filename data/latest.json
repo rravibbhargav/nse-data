@@ -1,18 +1,18 @@
 {
- "date_iso": "2026-11-26",
- "date_disp": "26-11-2026",
+ "date_iso": "2026-11-27",
+ "date_disp": "27-11-2026",
  "trading_day": true,
- "generated_at": "2026-11-27T03:27:00.869656+05:30",
+ "generated_at": "2026-11-28T03:09:13.127633+05:30",
  "mode": "schedule",
  "breadth": {
-  "total": 2782,
-  "adv": 1497,
-  "dec": 1244,
-  "unch": 41,
-  "avg_move": 0.32,
-  "pct_red": 44.7,
-  "ad_ratio": 1.2,
-  "turnover_lakh_cr": 1.21
+  "total": 2783,
+  "adv": 1566,
+  "dec": 1181,
+  "unch": 36,
+  "avg_move": 0.53,
+  "pct_red": 42.4,
+  "ad_ratio": 1.33,
+  "turnover_lakh_cr": 1.14
  },
  "week52": {
   "highs_count": 0,
@@ -32,120 +32,214 @@
  },
  "price_band": {
   "ok": true,
-  "count": 6,
+  "count": 21,
   "first_run": false,
   "changed": [
    {
-    "symbol": "DEEDEV",
+    "symbol": "BRACEPORT",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "ORTINGLOBE",
+    "symbol": "CUBEXTUB",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "ICDSLTD",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "TERASOFT",
+    "old": "20",
+    "new": "5"
+   },
+   {
+    "symbol": "VALIANTLAB",
+    "old": "2",
+    "new": "5"
+   },
+   {
+    "symbol": "VPFL",
     "old": "10",
     "new": "5"
    },
    {
-    "symbol": "UTLSOLAR",
-    "old": "10",
-    "new": "5"
+    "symbol": "BALKRISHNA",
+    "old": "20",
+    "new": "10"
    },
    {
-    "symbol": "VALUE360",
-    "old": "10",
-    "new": "5"
+    "symbol": "EEPL",
+    "old": "5",
+    "new": "10"
    },
    {
-    "symbol": "IEX",
-    "old": "No Band",
+    "symbol": "KOTARISUG",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "KRONOX",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "MINALIND",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "MPDL",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "MYSORPETRO",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "SIGIND",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "SUPTANERY",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "VELJAN",
+    "old": "5",
+    "new": "10"
+   },
+   {
+    "symbol": "AKSHARCHEM",
+    "old": "5",
     "new": "20"
    },
    {
-    "symbol": "IREDA",
-    "old": "No Band",
+    "symbol": "FRESHARA",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "METALIC",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "SWARAJ",
+    "old": "5",
+    "new": "20"
+   },
+   {
+    "symbol": "WOMANCART",
+    "old": "5",
     "new": "20"
    }
   ]
  },
  "sector_moves": {},
  "lcuc": {
-  "window": "16 Nov\u201325 Nov",
+  "window": "17 Nov\u201326 Nov",
   "matches": [
    {
-    "date": "2026-11-26",
+    "date": "2026-11-27",
     "cat": "a",
-    "symbol": "E2E",
-    "band": 5.0,
-    "prev_close": 453.25,
-    "open": 455.0,
-    "high": 475.9,
-    "low": 455.0,
-    "close": 475.9,
-    "uc": 475.9,
-    "dist_pct": 0.0,
-    "deliv_pct": 65.16,
-    "qty": 584073,
-    "turnover_lacs": 2747.08,
-    "lc_days": "16 Nov (lock), 17 Nov, 19 Nov, 20 Nov, 23 Nov (lock)",
-    "lc_count": 5,
-    "window": "16 Nov\u201325 Nov"
-   },
-   {
-    "date": "2026-11-26",
-    "cat": "a",
-    "symbol": "ESDS",
-    "band": 5.0,
-    "prev_close": 1054.5,
-    "open": 1060.0,
-    "high": 1107.2,
-    "low": 1045.0,
-    "close": 1107.2,
-    "uc": 1107.2,
-    "dist_pct": 0.0,
-    "deliv_pct": 39.19,
-    "qty": 369029,
-    "turnover_lacs": 4027.42,
-    "lc_days": "16 Nov (lock), 19 Nov, 23 Nov (lock)",
-    "lc_count": 3,
-    "window": "16 Nov\u201325 Nov"
-   },
-   {
-    "date": "2026-11-26",
-    "cat": "a",
-    "symbol": "ONIXSOLAR",
-    "band": 5.0,
-    "prev_close": 265.4,
-    "open": 271.3,
-    "high": 278.65,
-    "low": 265.95,
-    "close": 278.65,
-    "uc": 278.65,
-    "dist_pct": 0.0,
-    "deliv_pct": 53.53,
-    "qty": 110068,
-    "turnover_lacs": 299.62,
-    "lc_days": "16 Nov (lock)",
-    "lc_count": 1,
-    "window": "16 Nov\u201325 Nov"
-   },
-   {
-    "date": "2026-11-26",
-    "cat": "b",
     "symbol": "TIL",
     "band": 5.0,
-    "prev_close": 192.76,
-    "open": 192.5,
-    "high": 202.39,
-    "low": 189.9,
-    "close": 202.36,
-    "uc": 202.39,
-    "dist_pct": 0.01,
-    "deliv_pct": 66.29,
-    "qty": 101780,
-    "turnover_lacs": 200.69,
+    "prev_close": 202.36,
+    "open": 205.0,
+    "high": 212.47,
+    "low": 203.5,
+    "close": 212.47,
+    "uc": 212.47,
+    "dist_pct": 0.0,
+    "deliv_pct": 84.65,
+    "qty": 104054,
+    "turnover_lacs": 219.92,
     "lc_days": "25 Nov",
     "lc_count": 1,
-    "window": "16 Nov\u201325 Nov"
+    "window": "17 Nov\u201326 Nov"
+   },
+   {
+    "date": "2026-11-27",
+    "cat": "b",
+    "symbol": "E2E",
+    "band": 5.0,
+    "prev_close": 475.9,
+    "open": 477.0,
+    "high": 499.65,
+    "low": 472.55,
+    "close": 498.75,
+    "uc": 499.65,
+    "dist_pct": 0.18,
+    "deliv_pct": 46.63,
+    "qty": 1690406,
+    "turnover_lacs": 8292.65,
+    "lc_days": "17 Nov, 19 Nov, 20 Nov, 23 Nov (lock)",
+    "lc_count": 4,
+    "window": "17 Nov\u201326 Nov"
+   },
+   {
+    "date": "2026-11-27",
+    "cat": "b",
+    "symbol": "ESDS",
+    "band": 5.0,
+    "prev_close": 1107.2,
+    "open": 1130.0,
+    "high": 1162.5,
+    "low": 1098.1,
+    "close": 1152.1,
+    "uc": 1162.5,
+    "dist_pct": 0.89,
+    "deliv_pct": 34.31,
+    "qty": 834626,
+    "turnover_lacs": 9493.05,
+    "lc_days": "19 Nov, 23 Nov (lock)",
+    "lc_count": 2,
+    "window": "17 Nov\u201326 Nov"
+   },
+   {
+    "date": "2026-11-27",
+    "cat": "c",
+    "symbol": "LALITHAA",
+    "band": 5.0,
+    "prev_close": 286.8,
+    "open": 286.85,
+    "high": 298.8,
+    "low": 285.4,
+    "close": 296.25,
+    "uc": 301.1,
+    "dist_pct": 1.61,
+    "deliv_pct": 42.12,
+    "qty": 2800286,
+    "turnover_lacs": 8201.65,
+    "lc_days": "18 Nov, 25 Nov (lock)",
+    "lc_count": 2,
+    "window": "17 Nov\u201326 Nov"
+   },
+   {
+    "date": "2026-11-27",
+    "cat": "c",
+    "symbol": "DIACABS",
+    "band": 5.0,
+    "prev_close": 351.6,
+    "open": 351.6,
+    "high": 368.0,
+    "low": 350.05,
+    "close": 362.95,
+    "uc": 369.15,
+    "dist_pct": 1.68,
+    "deliv_pct": 51.0,
+    "qty": 1575917,
+    "turnover_lacs": 5708.14,
+    "lc_days": "25 Nov",
+    "lc_count": 1,
+    "window": "17 Nov\u201326 Nov"
    }
   ]
  }
