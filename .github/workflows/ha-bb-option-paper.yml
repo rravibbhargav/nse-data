@@ -40,8 +40,12 @@ jobs:
         id: window
         run: |
           H=$(TZ=Asia/Kolkata date +%H%M)
-          if [ "$H" -gt "1400" ]; then
-            echo "Started at $H IST - too late, skipping (clean exit)."
+          # A run starting after 09:30 cannot take a pre-open strike, and when a
+          # run is already going a queued second one starts a parallel session on
+          # a different strike and pollutes the day's log - that happened on
+          # 27 Nov. So anything this late is dropped.
+          if [ "$H" -gt "0930" ]; then
+            echo "Started at $H IST - too late for a pre-open strike, skipping (clean exit)."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
