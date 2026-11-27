@@ -1,9 +1,9 @@
 {
- "date_iso": "2026-11-26",
- "date_disp": "26 Nov 2026",
- "generated_at": "2026-11-26T09:28:41+05:30",
- "scanned": 493,
- "index_ret_1m": 11.37,
+ "date_iso": "2026-11-27",
+ "date_disp": "27 Nov 2026",
+ "generated_at": "2026-11-27T23:40:23+05:30",
+ "scanned": 492,
+ "index_ret_1m": 10.19,
  "params": {
   "MIN_PRICE": 50,
   "MIN_TURNOVER_CR": 10,
