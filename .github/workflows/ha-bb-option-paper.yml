@@ -11,6 +11,9 @@ on:
     - cron: '24 3 * * 1-5'   # 08:54 IST
     - cron: '30 3 * * 1-5'   # 09:00 IST
     - cron: '40 3 * * 1-5'   # 09:10 IST (late, but still a trading session)
+  push:
+    paths:
+      - '.github/kick-habb'   # daily kick: fires at once even when GitHub's cron skips
   workflow_dispatch:
 
 permissions:
